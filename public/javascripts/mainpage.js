@@ -6,37 +6,56 @@ var views = [
     '#prizesInput',
     '#scheduleInput'
 ];
+var viewIDs = [
+    '#main',
+    '#updates',
+    '#mentors',
+    '#prizes',
+    '#schedule'
+];
+
 
 $(document).ready(function() {
 
 
     $('#main').click(function(event) {
-        $(views[activeView]).fadeOut(250, function() {//'#updatesInput, #mentorsInput, #prizesInput, #scheduleInput'
+        $(views[activeView]).fadeOut(250, function() {
+            console.log("Get element: "+viewIDs[activeView]);
+            document.getElementById('#main').style.opacity = 1.0;
             activeView = 0;
+            document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#mainInput').fadeIn(250);
         });
     });
     $('#updates').click(function(event) {
-        $(views[activeView]).fadeOut(250, function() { //'#mainInput, #mentorsInput, #prizesInput, #scheduleInput'
+        $(views[activeView]).fadeOut(250, function() {
+            document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 1;
+            document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#updatesInput').fadeIn(250);
         });
     });
     $('#mentors').click(function(event) {
-        $(views[activeView]).fadeOut(250, function() {//'#updatesInput, #mainInput, #prizesInput, #scheduleInput'
+        $(views[activeView]).fadeOut(250, function() {
+            document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 2;
+            document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#mentorsInput').fadeIn(250);
         });
     });
     $('#prizes').click(function(event) {
-        $(views[activeView]).fadeOut(250, function() {//'#updatesInput, #mentorsInput, #mainInput, #scheduleInput'
+        $(views[activeView]).fadeOut(250, function() {
+            document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 3;
+            document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#prizesInput').fadeIn(250);
         });
     });
     $('#schedule').click(function(event) {
-        $(views[activeView]).fadeOut(250, function() {//'#updatesInput, #mentorsInput, #prizesInput, #mainInput'
+        $(views[activeView]).fadeOut(250, function() {
+            document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 4;
+            document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#scheduleInput').fadeIn(250);
         });
     });
