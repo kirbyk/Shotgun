@@ -1,91 +1,14 @@
 <ion-view title="Prizes">
   <ion-content class="padding">
     <ion-list class="list prizes">
-      <div class="card">
+      <div ng-repeat="prize in prizes" class="card">
         <ion-item class="item">
           <div class="item-left">
             <img class="logo" src="img/apple.jpg">
           </div>
           <div class="item-content">
-            <h2>128 GB iPad Air</h2>
-            <p>Best use of iOS</p>
-          </div>
-        </ion-item>
-      </div>
-      <div class="card">
-        <ion-item class="item">
-          <div class="item-left">
-            <img class="logo" src="img/microsoft.png">
-          </div>
-          <div class="item-content">
-            <h2>MS Surface Pro</h2>
-            <p>Top Windows Phone hack</p>
-          </div>
-        </ion-item>
-      </div>
-      <div class="card">
-        <ion-item class="item">
-          <div class="item-left">
-            <img class="logo" src="img/apple.jpg">
-          </div>
-          <div class="item-content">
-            <h2>128 GB iPad Air</h2>
-            <p>Best use of iOS</p>
-          </div>
-        </ion-item>
-      </div>
-      <div class="card">
-        <ion-item class="item">
-          <div class="item-left">
-            <img class="logo" src="img/microsoft.png">
-          </div>
-          <div class="item-content">
-            <h2>MS Surface Pro</h2>
-            <p>Top Windows Phone hack</p>
-          </div>
-        </ion-item>
-      </div>
-      <div class="card">
-        <ion-item class="item">
-          <div class="item-left">
-            <img class="logo" src="img/apple.jpg">
-          </div>
-          <div class="item-content">
-            <h2>128 GB iPad Air</h2>
-            <p>Best use of iOS</p>
-          </div>
-        </ion-item>
-      </div>
-      <div class="card">
-        <ion-item class="item">
-          <div class="item-left">
-            <img class="logo" src="img/microsoft.png">
-          </div>
-          <div class="item-content">
-            <h2>MS Surface Pro</h2>
-            <p>Top Windows Phone hack</p>
-          </div>
-        </ion-item>
-      </div>
-      <div class="card">
-        <ion-item class="item">
-          <div class="item-left">
-            <img class="logo" src="img/apple.jpg">
-          </div>
-          <div class="item-content">
-            <h2>128 GB iPad Air</h2>
-            <p>Best use of iOS</p>
-          </div>
-        </ion-item>
-      </div>
-      <div class="card">
-        <ion-item class="item">
-          <div class="item-left">
-            <img class="logo" src="img/microsoft.png">
-          </div>
-          <div class="item-content">
-            <h2>MS Surface Pro</h2>
-            <p>Top Windows Phone hack</p>
+            <h2>{{prize.award}}</h2>
+            <p>{{prize.title}}</p>
           </div>
         </ion-item>
       </div>
