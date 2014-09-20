@@ -6,6 +6,8 @@ block content
     .header
         img(src="images/shotgun_logo.png")
         h1 SHOTGUN
+        .build
+            input(type="submit" value="BUILD")
         .logout
             input(type="submit" value="LOG OUT")
 
@@ -22,6 +24,12 @@ block content
 
         .inputs
             .break3em
+            .rowButtons
+                input(type="submit" value="MAIN")
+                input(type="submit" value="UPDATES")
+                input(type="submit" value="MENTORS")
+                input(type="submit" value="PRIZES")
+                input(type="submit" value="SCHEDULE")
             .addThree
                 label(for="name") Event Name
                 input(type="text" name="name")
@@ -36,7 +44,14 @@ block content
                 label(for="") Upload a Logo
                 input(type='filepicker', data-fp-apikey='AAhXvilT1RIaTrxakvtWnz', data-fp-mimetypes='*/*', data-fp-container='modal', data-fp-services='COMPUTER,DROPBOX,GOOGLE_DRIVE,URL', onchange='filePicked(event)' data-fp-button-text="UPLOAD")
 
+            
+            .addThree.mentors(style='display:none;')
 
+                input#mentorCompanyInput.inputField(type='text', placeholder='Mentor Company')
+                input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
+                input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
+                input.add(type='Submit' id='addMentor' value='Add Mentor')
+                input.continue(type='Submit' id='continue' value='Continue')
     
     //- .addThree
     //-     input(type="text" name="name" placeholder="Event Name")
@@ -46,13 +61,6 @@ block content
 
 
 
-    //- .addThree.mentors(style='display:none;')
-
-    //-     input#mentorCompanyInput.inputField(type='text', placeholder='Mentor Company')
-    //-     input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
-    //-     input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
-    //-     input.add(type='Submit' id='addMentor' value='Add Mentor')
-    //-     input.continue(type='Submit' id='continue' value='Continue')
 
     //- <div id='mentorUpdate' class='recieveUpdate'></div>
 

@@ -54,6 +54,32 @@ body {
       -ms-transition: all .25s ease;
        -o-transition: all .25s ease;
 }
+.header .build input {
+    position: absolute;
+    top: 0.2em;
+    right: 8em;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #2C3E50;
+    border: none;
+    border-radius: 0.25em;
+    background: none;
+    padding: 0.15em 0.5em;
+    -webkit-transition: all .25s ease;
+     -moz-transition: all .25s ease;
+      -ms-transition: all .25s ease;
+       -o-transition: all .25s ease;
+          transition: all .25s ease;
+}
+.header .build input:hover {
+    color: white;
+    background-color: #2C3E50;
+    cursor: pointer;
+    -webkit-transition: all .25s ease;
+     -moz-transition: all .25s ease;
+      -ms-transition: all .25s ease;
+       -o-transition: all .25s ease;
+}
 
 
 
@@ -239,3 +265,27 @@ body {
   height: 98.6%;
 }
 
+
+
+
+
+
+
+
+
+.rowButtons {
+  width: 100%;
+}
+.content .rowButtons input {
+  width: 20%;
+  display: inline-block;
+  font-size: 0.8em;
+  float: left;
+  border-radius: 0;
+}
+.content .rowButtons input:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.content .rowButtons input:last-child {
+  border-radius: 0 4px 4px 0;
+}
