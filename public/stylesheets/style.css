@@ -50,6 +50,31 @@ hr {
   background-color: #000000;
 }
 
+#buildBTN {
+    border:2px solid #000000;
+    background:#2ecc71;
+    display:inline-block;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:22px;
+    font-weight:bold;
+    font-style:normal;
+    line-height:50px;
+    text-decoration:none;
+    text-align:center;
+    text-shadow:1px 1px 0px #577528;
+
+    width: 20%;
+}
+#buildBTN:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+#buildBTN:active {
+    position:relative;
+    top:1px;
+}
+
 footer {
     float: bottom;
     height: 100%;
