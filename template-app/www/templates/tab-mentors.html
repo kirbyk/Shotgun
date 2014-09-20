@@ -1,13 +1,13 @@
 <ion-view title="Mentors">
   <ion-content>
     <ion-list class="list mentors">
-      <div ng-repeat="company in mentors" class="card">
+      <div ng-repeat="(name, company) in mentors" class="card">
         <ion-item class="item item-divider">
-          Apple
+          {{name}}
         </ion-item>
-        <ion-item ng-repeat="mentor in company.people" class="item">
+        <ion-item ng-repeat="mentor in company" class="item">
           <div class="item-info">
-            <h2>{{mentor.$value}}</h2> <!-- Name -->
+            <h2>{{mentor.name}}</h2> <!-- Name -->
             <p>{{mentor.skills}}</p> <!-- Skills -->
           </div>
           <div class="item-more">
