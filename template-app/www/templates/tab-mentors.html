@@ -3,7 +3,7 @@
     <ion-list class="list mentors">
       <div ng-repeat="company in mentors" class="card">
         <ion-item class="item item-divider">
-          {{company.$value}}
+          Apple
         </ion-item>
         <ion-item ng-repeat="mentor in company.people" class="item">
           <div class="item-info">
@@ -11,11 +11,11 @@
             <p>{{mentor.skills}}</p> <!-- Skills -->
           </div>
           <div class="item-more">
-            <a class="button button-icon icon ion-ios7-more-outline more-info"></a> <!-- Click to reveal contact info -->
+            <a class="button button-icon icon ion-ios7-more-outline more-info" onclick="toggleOptions(this)"></a> <!-- Click to reveal contact info -->
           </div>
-          <ion-option-button class="button-info button button-icon icon ion-ios7-telephone item-phone" ng-click="edit(item)"></ion-option-button> <!-- Phone -->
-          <ion-option-button class="button-info button button-icon icon ion-ios7-chatbubble item-text" ng-click="edit(item)"></ion-option-button> <!-- Text -->
-          <ion-option-button class="button-info button button-icon icon ion-ios7-location item-location" ng-click="edit(item)"></ion-option-button> <!-- Location -->
+          <ion-option-button class="button-info button button-icon icon ion-ios7-telephone item-phone"></ion-option-button> <!-- Phone -->
+          <ion-option-button class="button-info button button-icon icon ion-ios7-chatbubble item-text"></ion-option-button> <!-- Text -->
+          <ion-option-button class="button-info button button-icon icon ion-ios7-location item-location"></ion-option-button> <!-- Location -->
         </ion-item>
       </div>
     </ion-list>

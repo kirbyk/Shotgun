@@ -1,15 +1,20 @@
 
+/* PANE */
+
+.pane {
+    background-image: url('../img/bg_dark.png');
+}
+
+
+
+
+
+
+
 /* HEADER */
+
 .bar {
     background-color: #ECF0F1;
-}
-.bar::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    top: 44px;
-    left: 0;
-    border-bottom: 1px solid #ddd;
 }
 .bar .title {
     color: #2C3E50;
@@ -23,14 +28,6 @@
 
 .tabs {
     background-color: #ECF0F1;
-}
-.tabs::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    bottom: 49px;
-    left: 0;
-    border-bottom: 1px solid #ddd;
 }
 .icon {
     color: #2C3E50;
@@ -115,6 +112,19 @@
 }
 .mentors .item .item-content {
     padding: 0;
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+}
+.mentors .item .item-content.open {
+    -webkit-transform: translate3d(-138px, 0px, 0px);
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
 }
 .item-phone {
     padding: 10px 12px 0;
