@@ -1,1 +1,14 @@
 /* Empty. Add your own CSS if you like */
+
+.pane {
+    background-image: url('../img/bm-man.png');
+    background-size: cover;
+    background-position: center;
+}
+.bar {
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+}
+.bar .title {
+    color: white;
+}
