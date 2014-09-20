@@ -2,25 +2,24 @@ extends layout
 
 block content
 
-    .login
-        a(href="/home")
-            input(type="submit" value="LOG IN")
+    .choose-type
 
-    .banner
-        img(src="images/shotgun_logo.png", alt="")
-        h1 SHOTGUN
-        p SET YOUR STYLE, CUSTOMIZE YOUR CONTENT,
-        p AND PULL THE TRIGGER.
-        br
-        p.red IT'S THAT SIMPLE.
+        h1 CHOOSE A TYPE:
 
+        .selections
+            a(href="/hackathon")
+                .selection.hackathon
+                    h2 HACKATHON
+            a(href="/hackathon")
+                .selection.wedding
+                    h2 WEDDING
+            a(href="/hackathon")
+                .selection.conference
+                    h2 CONFERENCE
 
-
-    //- hr
-
-    //- <input type='text' class='inputField' id='mentorCompanyInput' placeholder='Mentor Company'>
-    //- <input type='text' class='inputField' id='mentorNameInput' placeholder='Mentor Name'>
-    //- <input type='text' class='inputField' id='mentorDescriptionInput' placeholder='Mentor Skills'>
+    //- input#mentorCompanyInput.inputField(type='text', placeholder='Mentor Company')
+    //- input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
+    //- input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
     //- button(id="addMentor" class="btn").
     //-     Add Mentor
 

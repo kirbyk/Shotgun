@@ -1,0 +1,48 @@
+extends layout
+
+block content
+
+    .setup
+        .break3em
+        .title
+            h2 HACKATHON
+            svg(height='14em' width='14em')
+                circle(cx='7em' cy='7em' r='6em' stroke='#E74C3C' stroke-width='3' fill='none')
+                circle(cx='7em' cy='7em' r='6em' stroke='#E74C3C' stroke-width='10' fill='none')
+
+        
+        .addThree
+            input(type="text" name="name")
+            input(type="file" name="logo")
+
+
+
+        .addThree.mentors(style='display:none;')
+
+            input#mentorCompanyInput.inputField(type='text', placeholder='Mentor Company')
+            input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
+            input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
+            input.add(type='Submit' id='addMentor' value='Add Mentor')
+            input.continue(type='Submit' id='continue' value='Continue')
+
+    //- <div id='mentorUpdate' class='recieveUpdate'></div>
+
+    //- br
+    //- br
+
+    //- <input type='text' class='inputField' id='updateHeader' placeholder='Header'>
+    //- <input type='text' class='inputField' id='updateSubHeader' placeholder='Description'>
+    //- button(id="addUpdate" class="btn").
+    //-     Add Update
+
+    //- <div id='updateUpdate' class='recieveUpdate'></div>
+
+    //- br
+    //- br
+
+    //- <input class="hidden" type="file" accept="image/*" capture="camera" id="file-upload">
+    //- <br/>
+    //- <img class="logoImage" id="logo"/>
+
+    //- footer
+    //-     p @Copyright Easy App 2014
