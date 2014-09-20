@@ -18,8 +18,16 @@ angular.module('starter.controllers', [])
   $scope.mentor = Mentors.get($stateParams.mentorId);
 })
 
-.controller('PrizesCtrl', function($scope) {
+.controller('PrizesCtrl', function($scope, $firebase) {
+  var ref = new Firebase("https://easy-app.firebaseio.com/prizes");
+  var sync = $firebase(ref);
+  var syncObject = sync.$asObject();
+  syncObject.$bindTo($scope, "prizes");
 })
 
-.controller('ScheduleCtrl', function($scope) {
+.controller('ScheduleCtrl', function($scope, $firebase) {
+  var ref = new Firebase("https://easy-app.firebaseio.com/schedule");
+  var sync = $firebase(ref);
+  var syncObject = sync.$asObject();
+  syncObject.$bindTo($scope, "days");
 });
