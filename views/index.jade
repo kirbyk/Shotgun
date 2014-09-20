@@ -1,5 +1,10 @@
 html
-  head
-    title!= title
-  body
-    h1!= message
+    head
+        title!= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        header
+            h1!= message
+        button(class="button", href="/views/otherpage.jade").
+            Click for redirects/actions
+        footer
