@@ -149,3 +149,29 @@
     margin-bottom: 0;
     display: block;
 }
+
+
+
+
+
+
+
+
+
+
+/* PRIZES */
+
+.prizes .item .item-left .logo {
+    width: 100%;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+.prizes .item .item-left h6 {
+    text-align: center;
+}
+.prizes .item .item-content {
+    position: relative;
+    width: 80%;
+    display: inline-block;
+    vertical-align: middle;
+}
