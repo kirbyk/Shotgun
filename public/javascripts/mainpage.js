@@ -54,29 +54,30 @@ $(document).ready(function() {
         var socket = io();
         socket.emit('build request');
     });
-});
 
-function handleFileSelect(evt) {
-    console.log("In handle");
-    var f = evt.target.files[0];
-    var reader = new FileReader();
-    reader.onload = (function(theFile) {
-        console.log("In load");
-        return function(e) {
-            var filePayload = e.target.result;
-            var imageLocation = myDataRef.child('/logoImage');
-            console.log("In sending!!");
+    //handle image loading (logo)
+    function handleFileSelect(evt) {
+        console.log("In handle");
+        var f = evt.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (function(theFile) {
+            console.log("In load");
+            return function(e) {
+                var filePayload = e.target.result;
+                var imageLocation = myDataRef.child('/logoImage');
+                console.log("In sending!!");
 
-
-            document.getElementById("logo").src = e.target.result;
-
-            imageLocation.set(filePayload, function() {
-                console.log("BONSAI");
 
                 document.getElementById("logo").src = e.target.result;
-                //$('#file-upload').hide();
-            });
-        };
-    })(f);
-    reader.readAsDataURL(f);
-}
+
+                imageLocation.set(filePayload, function() {
+                    console.log("BONSAI");
+
+                    document.getElementById("logo").src = e.target.result;
+                    //$('#file-upload').hide();
+                });
+            };
+        })(f);
+        reader.readAsDataURL(f);
+    }
+});
