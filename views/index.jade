@@ -22,7 +22,6 @@ html
         <div id='mentorUpdate' class='recieveUpdate'></div>
 
         br
-        br
 
         <input type='text' class='inputField' id='updateHeader' placeholder='Header'>
         <input type='text' class='inputField' id='updateSubHeader' placeholder='Description'>
@@ -32,11 +31,19 @@ html
         <div id='updateUpdate' class='recieveUpdate'></div>
 
         br
-        br
 
         <input class="hidden" type="file" accept="image/*" capture="camera" id="file-upload">
         <br/>
         <img class="logoImage" id="logo"/>
+
+        br
+        br
+
+        <input type='text' class='inputField' id='colorMain' placeholder='Main Color'>
+        <input type='text' class='inputField' id='colorSecondary' placeholder='Secondary Color'>
+        <input type='text' class='inputField' id='colorHighlight' placeholder='Highlight Color'>
+
+        br
 
         button(id="buildBTN").
             BUILD!

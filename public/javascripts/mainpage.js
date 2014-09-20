@@ -52,7 +52,18 @@ $(document).ready(function() {
     $('#buildBTN').click(function() {
         //send a connect to the server indicating build
         var socket = io();
-        socket.emit('build request');
+
+        var colorsChosen =  $('#colorMain').val() + " " +
+                            $('#colorSecondary').val() + " " +
+                            $('#colorHighlight').val();
+        //send the colors chosen
+        socket.emit('build request', {color: colorsChosen,
+                                      imageName: "blah.jpg"});
+
+        //reset the colors
+        $('#colorMain').val('');
+        $('#colorSecondary').val('');
+        $('#colorHighlight').val('');
     });
 
     //handle image loading (logo)

@@ -25,10 +25,24 @@ io.on('connection', function(socket){
     socket.on('build request', function(msg){
         console.log('Attempting build.');
 
+        console.log("Colors: "+msg.color);
+
+        //file saver (for build prefs)
+        var fs = require('fs');
+
+        //writing a text file with name of the image and color schemes
+        fs.writeFile("/colors.css", msg, function(err) {
+            if(err) {
+                console.log(err);
+            } else {
+                console.log("The file was saved!");
+            }
+        });
+
         var exec = require('child_process').exec;
         var child;
-        var buildCommand = "phonegap build yo";
-        
+        var buildCommand = "pwd";
+
         // executes `pwd`
         child = exec(buildCommand, function (error, stdout, stderr) {
             console.log('stdout: ' + stdout);
