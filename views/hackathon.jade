@@ -10,10 +10,10 @@ block content
                 circle(cx='7em' cy='7em' r='6em' stroke='#E74C3C' stroke-width='3' fill='none')
                 circle(cx='7em' cy='7em' r='6em' stroke='#E74C3C' stroke-width='10' fill='none')
 
-        
         .addThree
             input(type="text" name="name")
-            input(type="file" name="logo")
+            <input type="filepicker" data-fp-apikey="AAhXvilT1RIaTrxakvtWnz" data-fp-mimetypes="*/*" data-fp-container="modal" data-fp-services="COMPUTER,DROPBOX,GOOGLE_DRIVE,URL" onchange="filePicked(event)">
+
 
 
 
@@ -46,3 +46,5 @@ block content
 
     //- footer
     //-     p @Copyright Easy App 2014
+    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+    <script type="text/javascript" src="/javascripts/file.js"></script>
