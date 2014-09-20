@@ -1,5 +1,34 @@
 $(document).ready(function() {
 
+
+    $('#main').click(function(event) {
+        $('#updatesInput, #mentorsInput, #prizesInput, #scheduleInput').fadeOut(250, function() {
+            $('#mainInput').fadeIn(250);
+        });
+    });
+    $('#updates').click(function(event) {
+        $('#mainInput, #mentorsInput, #prizesInput, #scheduleInput').fadeOut(250, function() {
+            $('#updatesInput').fadeIn(250);
+        });
+    });
+    $('#mentors').click(function(event) {
+        $('#updatesInput, #mainInput, #prizesInput, #scheduleInput').fadeOut(250, function() {
+            $('#mentorsInput').fadeIn(250);
+        });
+    });
+    $('#prizes').click(function(event) {
+        $('#updatesInput, #mentorsInput, #mainInput, #scheduleInput').fadeOut(250, function() {
+            $('#prizesInput').fadeIn(250);
+        });
+    });
+    $('#schedule').click(function(event) {
+        $('#updatesInput, #mentorsInput, #prizesInput, #mainInput').fadeOut(250, function() {
+            $('#scheduleInput').fadeIn(250);
+        });
+    });
+
+
+
     var myDataRef = new Firebase('https://easy-app.firebaseio.com/');
 
     //mentor additions

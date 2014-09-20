@@ -24,14 +24,15 @@ block content
 
         .inputs
             .break3em
-            .rowButtons
-                input(type="submit" value="MAIN")
-                input(type="submit" value="UPDATES")
-                input(type="submit" value="MENTORS")
-                input(type="submit" value="PRIZES")
-                input(type="submit" value="SCHEDULE")
-            .addThree
-                label(for="name") Event Name
+            .rowButtons.cf
+                input#main(type="submit" value="MAIN")
+                input#updates(type="submit" value="UPDATES")
+                input#mentors(type="submit" value="MENTORS")
+                input#prizes(type="submit" value="PRIZES")
+                input#schedule(type="submit" value="SCHEDULE")
+            .break3em
+            .addThree#mainInput
+                label.cf(for="name") Event Name
                 input(type="text" name="name")
                 .block.cf
                     label.colors(for="name") Color 1
@@ -44,15 +45,36 @@ block content
                 label(for="") Upload a Logo
                 input(type='filepicker', data-fp-apikey='AAhXvilT1RIaTrxakvtWnz', data-fp-mimetypes='*/*', data-fp-container='modal', data-fp-services='COMPUTER,DROPBOX,GOOGLE_DRIVE,URL', onchange='filePicked(event)' data-fp-button-text="UPLOAD")
 
-            
-            .addThree.mentors(style='display:none;')
+            .addThree.updates#updatesInput(style='display:none;')
+
+                input.inputField(type='text', placeholder='Update Name')
+                input.inputField(type='text', placeholder='Update Description')
+                input.add(type='Submit' id='addUpdate' value='Add Update')
+
+
+            .addThree.mentors#mentorsInput(style='display:none;')
 
                 input#mentorCompanyInput.inputField(type='text', placeholder='Mentor Company')
                 input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
                 input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
                 input.add(type='Submit' id='addMentor' value='Add Mentor')
-                input.continue(type='Submit' id='continue' value='Continue')
     
+
+            .addThree.prizes#prizesInput(style='display:none;')
+
+                input.inputField(type='text', placeholder='Company Name')
+                input.inputField(type='text', placeholder='Prize Name')
+                input.inputField(type='text', placeholder='Prize Description')
+                input.add(type='Submit' id='addMentor' value='Add Prize')
+
+            .addThree.schedule#scheduleInput(style='display:none;')
+
+                input.inputField(type='text', placeholder='Event Name')
+                input.inputField(type='text', placeholder='Event Location')
+                input.inputField(type='text', placeholder='Event Description')
+                input.add(type='Submit' id='addMentor' value='Add Event')
+
+
     //- .addThree
     //-     input(type="text" name="name" placeholder="Event Name")
     //-     input(type="text" name="hexes" placeholder="Primary color")
