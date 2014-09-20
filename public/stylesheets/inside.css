@@ -75,3 +75,95 @@ body {
     padding-top: 3em;
     box-sizing: border-box;
 }
+.content .preview {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background-color: red;
+    float: left;
+}
+.content .inputs {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0 5%;
+}
+.content .inputs label {
+    position: relative;
+    width: 35%;
+    display: block;
+    box-sizing: border-box;
+    text-align: left;
+    margin-right: 5%;
+    font-size: 1em;
+}
+.content .inputs input {
+    position: relative;
+    width: 60%;
+    display: block;
+    box-sizing: border-box;
+    padding: 0.25em 1em;
+    font-size: 1.5em;
+    background-color: #ECF0F1;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 0.5em;
+    box-shadow:  0 0 0.25em #BDC3C7;
+}
+.content .inputs input.colors {
+    width: 16%;
+    display: inline-block;
+    float: left;
+    margin-right: 6%;
+}
+.content .inputs label.colors {
+    width: 20%;
+    display: inline-block;
+    float: left;
+    margin-right: 3%;
+}
+.content .inputs input:focus {
+  outline: none;
+  box-shadow: 0 0 0.5em #F1C40F;
+}
+.content .inputs button {
+  width: 60%;
+  margin-right: 0;
+  display: block;
+  background-color: #2C3E50;
+  color: white;
+  box-shadow:  0 0 0.25em #2C3E50;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.5em;
+  font-family: "brandon-grotesque";
+  -webkit-transition: all .25s ease;
+     -moz-transition: all .25s ease;
+      -ms-transition: all .25s ease;
+       -o-transition: all .25s ease;
+          transition: all .25s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.block {
+    float: left;
+    width: 100%;
+}
+

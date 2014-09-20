@@ -10,9 +10,22 @@ block content
             input(type="submit" value="LOG OUT")
 
     .content
-        .addThree
-            input(type="text" name="name")
-            <input type="filepicker" data-fp-apikey="AAhXvilT1RIaTrxakvtWnz" data-fp-mimetypes="*/*" data-fp-container="modal" data-fp-services="COMPUTER,DROPBOX,GOOGLE_DRIVE,URL" onchange="filePicked(event)">
+        .preview
+        .inputs
+            .break3em
+            .addThree
+                label(for="name") Event Name
+                input(type="text" name="name")
+                .block.cf
+                    label.colors(for="name") Color 1
+                    label.colors(for="name") Color 2
+                    label.colors(for="name") Color 3
+                .block.cf
+                    input.colors(type="text" name="name")
+                    input.colors(type="text" name="name")
+                    input.colors(type="text" name="name")
+                label(for="") Upload a Logo
+                input(type='filepicker', data-fp-apikey='AAhXvilT1RIaTrxakvtWnz', data-fp-mimetypes='*/*', data-fp-container='modal', data-fp-services='COMPUTER,DROPBOX,GOOGLE_DRIVE,URL', onchange='filePicked(event)' data-fp-button-text="UPLOAD")
 
 
     
