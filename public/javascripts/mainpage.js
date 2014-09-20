@@ -53,11 +53,11 @@ $(document).ready(function() {
         //send a connect to the server indicating build
         var socket = io();
 
-        var colorsChosen =  $('#colorMain').val() + " " +
-                            $('#colorSecondary').val() + " " +
-                            $('#colorHighlight').val();
         //send the colors chosen
-        socket.emit('build request', {color: colorsChosen,
+        socket.emit('build request', {appName: "POTATO",
+                                      color1: $('#colorMain').val(),
+                                      color2: $('#colorSecondary').val(),
+                                      color3: $('#colorHighlight').val(),
                                       imageName: "blah.jpg"});
 
         //reset the colors

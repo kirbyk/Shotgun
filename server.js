@@ -25,18 +25,17 @@ io.on('connection', function(socket){
     socket.on('build request', function(msg){
         console.log('Attempting build.');
 
-        console.log("Colors: "+msg.color);
+        console.log("Color1: "+msg.color1);
 
         //file saver (for build prefs)
         var fs = require('fs');
 
+        var toWrite = msg.color1;
+
         //writing a text file with name of the image and color schemes
-        fs.writeFile("/colors.css", msg, function(err) {
-            if(err) {
-                console.log(err);
-            } else {
-                console.log("The file was saved!");
-            }
+        fs.writeFile(".public/build/"+msg.appName+"-colors.css", "COLOR", function (err) {
+            if (err) throw err;
+            console.log('New build css created.');
         });
 
         var exec = require('child_process').exec;
