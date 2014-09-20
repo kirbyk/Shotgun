@@ -1,45 +1,51 @@
-.button {
-	-moz-box-shadow:inset 0px 1px 0px 0px #57e66d;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #57e66d;
-	box-shadow:inset 0px 1px 0px 0px #57e66d;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3acf3f), color-stop(1, #1b8527) );
-	background:-moz-linear-gradient( center top, #3acf3f 5%, #1b8527 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3acf3f', endColorstr='#1b8527');
-	background-color:#3acf3f;
-	-webkit-border-top-left-radius:6px;
-	-moz-border-radius-topleft:6px;
-	border-top-left-radius:6px;
-	-webkit-border-top-right-radius:6px;
-	-moz-border-radius-topright:6px;
-	border-top-right-radius:6px;
-	-webkit-border-bottom-right-radius:6px;
-	-moz-border-radius-bottomright:6px;
-	border-bottom-right-radius:6px;
-	-webkit-border-bottom-left-radius:6px;
-	-moz-border-radius-bottomleft:6px;
-	border-bottom-left-radius:6px;
-	text-indent:0;
-	border:1px solid #83c41a;
+body {
+    text-align: center;
+    background-color: #ecf0f1;
+}
+
+hr {
+    background-color: #000000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.inputField {
+    display:inline-block;
+}
+
+.btn {
+	border:2px solid #000000;
+    background:#EE00FF;
 	display:inline-block;
 	color:#ffffff;
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
 	font-style:normal;
-	height:50px;
 	line-height:50px;
-	width:100px;
 	text-decoration:none;
 	text-align:center;
 	text-shadow:1px 1px 0px #577528;
 }
-.button:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #1b8527), color-stop(1, #3acf3f) );
-	background:-moz-linear-gradient( center top, #1b8527 5%, #3acf3f 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1b8527', endColorstr='#3acf3f');
-	background-color:#1b8527;
+.btn:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
-.button:active {
+.btn:active {
 	position:relative;
 	top:1px;
+}
+
+.hidden {
+  display: none;
+}
+
+.logoImage {
+  max-height: 30%;
+  border: 4px;
+  background-color: #000000;
+}
+
+footer {
+    margin-top: 90%;
 }

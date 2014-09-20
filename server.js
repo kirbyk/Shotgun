@@ -13,6 +13,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use('/', routes);
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // 404 forward to error handler
 app.use(function(req, res, next) {
@@ -44,3 +46,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+module.exports = app;
