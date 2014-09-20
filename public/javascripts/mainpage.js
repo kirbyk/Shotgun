@@ -46,22 +46,29 @@ $(document).ready(function() {
         $("#updateUpdate").html("Successful!");
         setTimeout(function(){$("#updateUpdate").html("");},3000)
     });
-
-
-    function handleFileSelect(evt) {
-        var f = evt.target.files[0];
-        var reader = new FileReader();
-        reader.onload = (function(theFile) {
-            return function(e) {
-                var filePayload = e.target.result;
-                var imageLocation = myDataRef.child('/logoImage');
-
-                imageLocation.set(filePayload, function() {
-                    document.getElementById("logo").src = e.target.result;
-                    //$('#file-upload').hide();
-                });
-            };
-        })(f);
-        reader.readAsDataURL(f);
-    }
 });
+
+function handleFileSelect(evt) {
+    console.log("In handle");
+    var f = evt.target.files[0];
+    var reader = new FileReader();
+    reader.onload = (function(theFile) {
+        console.log("In load");
+        return function(e) {
+            var filePayload = e.target.result;
+            var imageLocation = myDataRef.child('/logoImage');
+            console.log("In sending!!");
+
+
+            document.getElementById("logo").src = e.target.result;
+
+            imageLocation.set(filePayload, function() {
+                console.log("BONSAI");
+
+                document.getElementById("logo").src = e.target.result;
+                //$('#file-upload').hide();
+            });
+        };
+    })(f);
+    reader.readAsDataURL(f);
+}

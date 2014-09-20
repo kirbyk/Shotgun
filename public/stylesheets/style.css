@@ -13,9 +13,13 @@ hr {
     display:inline-block;
 }
 
+.recieveUpdate {
+    background-color:#2ecc71;
+}
+
 .btn {
 	border:2px solid #000000;
-    background:#EE00FF;
+    background:#2ecc71;
 	display:inline-block;
 	color:#ffffff;
 	font-family:Arial;
@@ -37,7 +41,7 @@ hr {
 }
 
 .hidden {
-  display: none;
+  /*display: none;*/
 }
 
 .logoImage {
@@ -47,5 +51,6 @@ hr {
 }
 
 footer {
-    margin-top: 90%;
+    float: bottom;
+    height: 100%;
 }
