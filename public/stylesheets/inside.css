@@ -167,3 +167,75 @@ body {
     width: 100%;
 }
 
+
+
+#device, #devicetop, #screen {
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  transition: all .4s;
+}
+
+#devices {
+  background-color: #73c9ad;
+  width:100%;
+  height:100%;
+  padding: 3em 0 18em;
+  margin: 0;
+}
+
+#device {
+  margin: 0 auto;
+  background-color: #e9eae4;
+  border:0.189em solid #fff;
+  border-radius: 2.268em;
+  width: 17.388em;
+  height: 34.587em;
+  padding:2.5515em 0 0;
+  box-shadow: 0px 5px 0px #c5c3ba;
+}
+
+#devicetop {
+  background-color: #aba99f;
+  width: 2.835em;
+  height: 0.4725em;
+  border:0.189em solid #c5c3ba;
+  border-radius: 0.4725em;
+  margin: 0 auto 1.134em;
+}
+
+#screen {
+  background-color: #c5c3ba;
+  margin: 0 auto 0;
+  border: 0.2835em solid #aba99f;
+  border-radius: 0.2835em;
+  width:15.12em;
+  height:26.838em;
+}
+
+#button {
+  margin: 0.945em auto 0;
+  background-color: #c5c3ba;
+  width: 1.6065em;
+  height: 1.6065em;
+  border-radius: 50%;
+  padding: 0.8505em;
+  cursor: hand;
+}
+
+#button:hover {
+  cursor: hand;
+}
+
+#button-square {
+  margin: 0 auto 0 0.0945em;
+  width: 1.0395em;
+  height: 1.0395em;
+  border: 0.189em solid #e9eae4;
+  border-radius: 0.378em;
+}
+
+.preview-frame {
+  width:97.6%;
+  height: 98.6%;
+}
+
