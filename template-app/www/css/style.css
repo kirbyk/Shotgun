@@ -1,14 +1,35 @@
 /* Empty. Add your own CSS if you like */
 
 .pane {
-    background-image: url('../img/bm-man.png');
-    background-size: cover;
-    background-position: center;
+    background-color: white;
 }
 .bar {
-    background-color: rgba(255,255,255,0.2);
-    color: white;
+    background-color: #ECF0F1;
+    border-bottom: 1px solid #BDC3C7;
 }
 .bar .title {
-    color: white;
+    color: #2C3E50;
+}
+.tabs {
+    border-top: 1px solid #BDC3C7 !important;
+    background-color: #ECF0F1;
+}
+.icon {
+    color: #2C3E50;
+}
+.tab-title {
+    color: #2C3E50;
+}
+
+
+
+
+
+
+/* LIST */
+
+.item {
+    white-space: normal !important;
+    text-overflow: none;
+    overflow: visible;
 }
