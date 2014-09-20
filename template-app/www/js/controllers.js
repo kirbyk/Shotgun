@@ -25,5 +25,9 @@ angular.module('starter.controllers', [])
   syncObject.$bindTo($scope, "prizes");
 })
 
-.controller('ScheduleCtrl', function($scope) {
+.controller('ScheduleCtrl', function($scope, $firebase) {
+  var ref = new Firebase("https://easy-app.firebaseio.com/schedule");
+  var sync = $firebase(ref);
+  var syncObject = sync.$asObject();
+  syncObject.$bindTo($scope, "days");
 });
