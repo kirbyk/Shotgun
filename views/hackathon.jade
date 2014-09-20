@@ -1,29 +1,32 @@
 extends layout
 
 block content
+    link(rel='stylesheet', href='/stylesheets/inside.css')
 
-    .setup
-        .break3em
-        .title
-            h2 HACKATHON
-            svg(height='14em' width='14em')
-                circle(cx='7em' cy='7em' r='6em' stroke='#E74C3C' stroke-width='3' fill='none')
-                circle(cx='7em' cy='7em' r='6em' stroke='#E74C3C' stroke-width='10' fill='none')
+    .header
+        img(src="images/shotgun_logo.png")
+        h1 SHOTGUN
+        .logout
+            input(type="submit" value="LOG OUT")
 
-        
-        .addThree
-            input(type="text" name="name")
-            input(type="file" name="logo")
+    .content
+
+    
+    //- .addThree
+    //-     input(type="text" name="name" placeholder="Event Name")
+    //-     input(type="text" name="hexes" placeholder="Primary color")
+    //-     input(type="text" name="hexes" placeholder="Primary color")
+    //-     input(type="file" name="logo")
 
 
 
-        .addThree.mentors(style='display:none;')
+    //- .addThree.mentors(style='display:none;')
 
-            input#mentorCompanyInput.inputField(type='text', placeholder='Mentor Company')
-            input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
-            input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
-            input.add(type='Submit' id='addMentor' value='Add Mentor')
-            input.continue(type='Submit' id='continue' value='Continue')
+    //-     input#mentorCompanyInput.inputField(type='text', placeholder='Mentor Company')
+    //-     input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
+    //-     input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
+    //-     input.add(type='Submit' id='addMentor' value='Add Mentor')
+    //-     input.continue(type='Submit' id='continue' value='Continue')
 
     //- <div id='mentorUpdate' class='recieveUpdate'></div>
 
