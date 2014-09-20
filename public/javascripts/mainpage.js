@@ -17,6 +17,7 @@ $(document).ready(function() {
         $('#mentorDescriptionInput').val('');
     });
     mentorRef.on('child_added', function(snapshot) {
+        //response recieved from server
         var message = snapshot.val();
         $("#mentorUpdate").html("Successful!");
         setTimeout(function(){$("#mentorUpdate").html("");},3000)
@@ -42,9 +43,16 @@ $(document).ready(function() {
         $('#updateSubHeaderInput').val('');
     });
     updateRef.on('child_added', function(snapshot) {
+        //response recieved from server
         var message = snapshot.val();
         $("#updateUpdate").html("Successful!");
         setTimeout(function(){$("#updateUpdate").html("");},3000)
+    });
+
+    $('#buildBTN').click(function() {
+        //send a connect to the server indicating build
+        var socket = io();
+        socket.emit('build request');
     });
 });
 
