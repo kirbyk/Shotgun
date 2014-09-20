@@ -2,12 +2,17 @@ extends layout
 
 block content
     link(rel='stylesheet', href='/stylesheets/inside.css')
+    <script src="/socket.io/socket.io.js"></script>
+    <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+    script(type='text/javascript', src='/javascripts/mainpage.js')
+    noscript Sorry, your browser does not support JavaScript!
 
     .header
         img(src="images/shotgun_logo.png")
         h1 SHOTGUN
         .build
-            input(type="submit" value="BUILD")
+            input(type="submit" id="buildBTN" value="BUILD")
         .logout
             input(type="submit" value="LOG OUT")
 

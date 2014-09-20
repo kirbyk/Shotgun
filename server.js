@@ -1,12 +1,16 @@
 var express = require('express');
-var app = express();
 var port = 3000;
 var userCounter = 0;
 var path = require('path');
 
 var routes = require('./routes/index');
 
-app.listen(port);
+var app = express(),
+    server = require('http').createServer(app),
+    io = require('socket.io').listen(server);
+
+server.listen(port);
+console.log("Listening on port: "+port);
 
 // render engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -15,6 +19,39 @@ app.set('view engine', 'jade');
 app.use('/', routes);
 app.use(express.static(path.join(__dirname, 'public')));
 
+io.on('connection', function(socket){
+    console.log('Connected to server');
+
+    socket.on('build request', function(msg){
+        console.log('Attempting build.');
+
+        // console.log("Color1: "+msg.color1);
+
+        //file saver (for build prefs)
+        // var fs = require('fs');
+
+        // var toWrite = msg.color1;
+
+        // //writing a text file with name of the image and color schemes
+        // fs.writeFile(".public/build/"+msg.appName+"-colors.css", "COLOR", function (err) {
+        //     if (err) throw err;
+        //     console.log('New build css created.');
+        // });
+
+        var exec = require('child_process').exec;
+        var child;
+        var buildCommand = "cd template-app && ionic emulate ios";
+
+        // executes `pwd`
+        child = exec(buildCommand, function (error, stdout, stderr) {
+            console.log('stdout: ' + stdout);
+            //console.log('stderr: ' + stderr);
+            if (error !== null) {
+                console.log('exec error: ' + error);
+            }
+        });
+      });
+});
 
 // 404 forward to error handler
 app.use(function(req, res, next) {

@@ -46,6 +46,7 @@ $(document).ready(function() {
         $('#mentorDescriptionInput').val('');
     });
     mentorRef.on('child_added', function(snapshot) {
+        //response recieved from server
         var message = snapshot.val();
         $("#mentorUpdate").html("Successful!");
         setTimeout(function(){$("#mentorUpdate").html("");},3000)
@@ -71,33 +72,53 @@ $(document).ready(function() {
         $('#updateSubHeaderInput').val('');
     });
     updateRef.on('child_added', function(snapshot) {
+        //response recieved from server
         var message = snapshot.val();
         $("#updateUpdate").html("Successful!");
         setTimeout(function(){$("#updateUpdate").html("");},3000)
     });
-});
 
-function handleFileSelect(evt) {
-    console.log("In handle");
-    var f = evt.target.files[0];
-    var reader = new FileReader();
-    reader.onload = (function(theFile) {
-        console.log("In load");
-        return function(e) {
-            var filePayload = e.target.result;
-            var imageLocation = myDataRef.child('/logoImage');
-            console.log("In sending!!");
+    $('#buildBTN').click(function() {
+        //send a connect to the server indicating build
+        var socket = io();
 
+        //send the colors chosen
+        socket.emit('build request');
+        // socket.emit('build request', {appName: "POTATO",
+        //                               color1: $('#colorMain').val(),
+        //                               color2: $('#colorSecondary').val(),
+        //                               color3: $('#colorHighlight').val(),
+        //                               imageName: "blah.jpg"});
 
-            document.getElementById("logo").src = e.target.result;
+        //reset the colors
+        // $('#colorMain').val('');
+        // $('#colorSecondary').val('');
+        // $('#colorHighlight').val('');
+    });
 
-            imageLocation.set(filePayload, function() {
-                console.log("BONSAI");
+    //handle image loading (logo)
+    function handleFileSelect(evt) {
+        console.log("In handle");
+        var f = evt.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (function(theFile) {
+            console.log("In load");
+            return function(e) {
+                var filePayload = e.target.result;
+                var imageLocation = myDataRef.child('/logoImage');
+                console.log("In sending!!");
+
 
                 document.getElementById("logo").src = e.target.result;
-                //$('#file-upload').hide();
-            });
-        };
-    })(f);
-    reader.readAsDataURL(f);
-}
+
+                imageLocation.set(filePayload, function() {
+                    console.log("BONSAI");
+
+                    document.getElementById("logo").src = e.target.result;
+                    //$('#file-upload').hide();
+                });
+            };
+        })(f);
+        reader.readAsDataURL(f);
+    }
+});
