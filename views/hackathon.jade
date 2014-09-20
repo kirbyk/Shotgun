@@ -10,6 +10,10 @@ block content
             input(type="submit" value="LOG OUT")
 
     .content
+        .addThree
+            input(type="text" name="name")
+            <input type="filepicker" data-fp-apikey="AAhXvilT1RIaTrxakvtWnz" data-fp-mimetypes="*/*" data-fp-container="modal" data-fp-services="COMPUTER,DROPBOX,GOOGLE_DRIVE,URL" onchange="filePicked(event)">
+
 
     
     //- .addThree
@@ -49,3 +53,5 @@ block content
 
     //- footer
     //-     p @Copyright Easy App 2014
+    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+    <script type="text/javascript" src="/javascripts/file.js"></script>
