@@ -1,8 +1,10 @@
 {
   "name": "easy-app",
+  "description": "Web app which generates mobile-apps",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-      "express": "4.5.1",
-    }
+    "express": "4.x",
+    "jade": "^1.7.0"
+  }
 }
