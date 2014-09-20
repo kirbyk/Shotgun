@@ -1,14 +1,14 @@
 <ion-view title="Mentors">
   <ion-content>
     <ion-list class="list mentors">
-      <div class="card">
+      <div ng-repeat="(name, company) in mentors" class="card">
         <ion-item class="item item-divider">
-          Big Booty Bitches
+          {{name}}
         </ion-item>
-        <ion-item class="item">
+        <ion-item ng-repeat="mentor in company" class="item">
           <div class="item-info">
-            <h2>Ben Alderfer</h2> <!-- Name -->
-            <p>Javascript, HTML, CSS/SASS</p> <!-- Skills -->
+            <h2>{{mentor.name}}</h2> <!-- Name -->
+            <p>{{mentor.skills}}</p> <!-- Skills -->
           </div>
           <div class="item-more">
             <a class="button button-icon icon ion-ios7-more-outline more-info" onclick="toggleOptions(this)"></a> <!-- Click to reveal contact info -->
@@ -16,47 +16,6 @@
           <ion-option-button class="button-info button button-icon icon ion-ios7-telephone item-phone"></ion-option-button> <!-- Phone -->
           <ion-option-button class="button-info button button-icon icon ion-ios7-chatbubble item-text"></ion-option-button> <!-- Text -->
           <ion-option-button class="button-info button button-icon icon ion-ios7-location item-location"></ion-option-button> <!-- Location -->
-        </ion-item>
-        <ion-item class="item">
-          <div class="item-info">
-            <h2>Kirby Kohlmorgen</h2> <!-- Name -->
-            <p>Shit no one really cares about</p>
-          </div>
-          <div class="item-more">
-            <a class="button button-icon icon ion-ios7-more-outline more-info" onclick="toggleOptions(this)"></a>
-          </div>
-          <ion-option-button class="button-info button button-icon icon ion-ios7-telephone item-phone"></ion-option-button>
-          <ion-option-button class="button-info button button-icon icon ion-ios7-chatbubble item-text"></ion-option-button>
-          <ion-option-button class="button-info button button-icon icon ion-ios7-location item-location"></ion-option-button>
-        </ion-item>
-      </div>
-      <div class="card">
-        <ion-item class="item item-divider">
-          Little Booty Bitches
-        </ion-item>
-        <ion-item class="item">
-          <div class="item-info">
-            <h2>Rhys Howell</h2> <!-- Name -->
-            <p>Games n' Shit</p>
-          </div>
-          <div class="item-more">
-            <a class="button button-icon icon ion-ios7-more-outline more-info" onclick="toggleOptions(this)"></a>
-          </div>
-          <ion-option-button class="button-info button button-icon icon ion-ios7-telephone item-phone" ng-click="edit(item)"></ion-option-button>
-          <ion-option-button class="button-info button button-icon icon ion-ios7-chatbubble item-text" ng-click="edit(item)"></ion-option-button>
-          <ion-option-button class="button-info button button-icon icon ion-ios7-location item-location" ng-click="edit(item)"></ion-option-button>
-        </ion-item>
-        <ion-item class="item">
-          <div class="item-info">
-            <h2>Mason Everett</h2> <!-- Name -->
-            <p>Ummm... good question</p>
-          </div>
-          <div class="item-more">
-            <a class="button button-icon icon ion-ios7-more-outline more-info" onclick="toggleOptions(this)"></a>
-          </div>
-          <ion-option-button class="button-info button button-icon icon ion-ios7-telephone item-phone" ng-click="edit(item)"></ion-option-button>
-          <ion-option-button class="button-info button button-icon icon ion-ios7-chatbubble item-text" ng-click="edit(item)"></ion-option-button>
-          <ion-option-button class="button-info button button-icon icon ion-ios7-location item-location" ng-click="edit(item)"></ion-option-button>
         </ion-item>
       </div>
     </ion-list>

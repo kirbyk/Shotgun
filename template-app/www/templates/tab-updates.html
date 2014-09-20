@@ -1,104 +1,14 @@
 <ion-view title="Updates">
   <ion-content>
     <ul class="list card updates">
-        <li class="item">
+        <li ng-repeat="update in updates" class="item">
             <div class='item-left'> <!-- Logo & Time -->
                 <img class="logo" src="img/bm_logo.png"> <!-- Logo -->
-                <h6>3:42 AM</h6> <!-- Time -->
+                <h6>{{update.createdAt}}</h6> <!-- Time -->
             </div>
             <div class="item-content">
-                <h2>Cookies Inbound!!!!!</h2> <!-- Title -->
-                <p style='white-space:normal;'>Come to the food bar for some dope ass cookies courtesy of Apple!</p> <!-- Text -->
-            </div>
-        </li>
-        <li class="item">
-            <div class='item-left'> <!-- Logo & Time -->
-                <img class="logo" src="img/bm_logo.png"> <!-- Logo -->
-                <h6>3:42 AM</h6> <!-- Time -->
-            </div>
-            <div class="item-content">
-                <h2>Cookies Inbound!!!!!</h2> <!-- Title -->
-                <p style='white-space:normal;'>Come to the food bar for some dope ass cookies courtesy of Apple!</p> <!-- Text -->
-            </div>
-        </li>
-        <li class="item">
-            <div class='item-left'> <!-- Logo & Time -->
-                <img class="logo" src="img/bm_logo.png"> <!-- Logo -->
-                <h6>3:42 AM</h6> <!-- Time -->
-            </div>
-            <div class="item-content">
-                <h2>Cookies Inbound!!!!!</h2> <!-- Title -->
-                <p style='white-space:normal;'>Come to the food bar for some dope ass cookies courtesy of Apple!</p> <!-- Text -->
-            </div>
-        </li>
-        <li class="item">
-            <div class='item-left'> <!-- Logo & Time -->
-                <img class="logo" src="img/bm_logo.png"> <!-- Logo -->
-                <h6>3:42 AM</h6> <!-- Time -->
-            </div>
-            <div class="item-content">
-                <h2>Cookies Inbound!!!!!</h2> <!-- Title -->
-                <p style='white-space:normal;'>Come to the food bar for some dope ass cookies courtesy of Apple!</p> <!-- Text -->
-            </div>
-        </li>
-        <li class="item">
-            <div class='item-left'> <!-- Logo & Time -->
-                <img class="logo" src="img/bm_logo.png"> <!-- Logo -->
-                <h6>3:42 AM</h6> <!-- Time -->
-            </div>
-            <div class="item-content">
-                <h2>Cookies Inbound!!!!!</h2> <!-- Title -->
-                <p style='white-space:normal;'>Come to the food bar for some dope ass cookies courtesy of Apple!</p> <!-- Text -->
-            </div>
-        </li>
-        <li class="item">
-            <div class='item-left'> <!-- Logo & Time -->
-                <img class="logo" src="img/bm_logo.png"> <!-- Logo -->
-                <h6>3:42 AM</h6> <!-- Time -->
-            </div>
-            <div class="item-content">
-                <h2>Cookies Inbound!!!!!</h2> <!-- Title -->
-                <p style='white-space:normal;'>Come to the food bar for some dope ass cookies courtesy of Apple!</p> <!-- Text -->
-            </div>
-        </li>
-        <li class="item">
-            <div class='item-left'> <!-- Logo & Time -->
-                <img class="logo" src="img/bm_logo.png"> <!-- Logo -->
-                <h6>3:42 AM</h6> <!-- Time -->
-            </div>
-            <div class="item-content">
-                <h2>Cookies Inbound!!!!!</h2> <!-- Title -->
-                <p style='white-space:normal;'>Come to the food bar for some dope ass cookies courtesy of Apple!</p> <!-- Text -->
-            </div>
-        </li>
-        <li class="item">
-            <div class='item-left'> <!-- Logo & Time -->
-                <img class="logo" src="img/bm_logo.png"> <!-- Logo -->
-                <h6>3:42 AM</h6> <!-- Time -->
-            </div>
-            <div class="item-content">
-                <h2>Cookies Inbound!!!!!</h2> <!-- Title -->
-                <p style='white-space:normal;'>Come to the food bar for some dope ass cookies courtesy of Apple!</p> <!-- Text -->
-            </div>
-        </li>
-        <li class="item">
-            <div class='item-left'> <!-- Logo & Time -->
-                <img class="logo" src="img/bm_logo.png"> <!-- Logo -->
-                <h6>3:42 AM</h6> <!-- Time -->
-            </div>
-            <div class="item-content">
-                <h2>Cookies Inbound!!!!!</h2> <!-- Title -->
-                <p style='white-space:normal;'>Come to the food bar for some dope ass cookies courtesy of Apple!</p> <!-- Text -->
-            </div>
-        </li>
-        <li class="item">
-            <div class='item-left'> <!-- Logo & Time -->
-                <img class="logo" src="img/bm_logo.png"> <!-- Logo -->
-                <h6>3:42 AM</h6> <!-- Time -->
-            </div>
-            <div class="item-content">
-                <h2>Cookies Inbound!!!!!</h2> <!-- Title -->
-                <p style='white-space:normal;'>Come to the food bar for some dope ass cookies courtesy of Apple!</p> <!-- Text -->
+                <h2>{{update.header}}</h2> <!-- Title -->
+                <p style='white-space:normal;'>{{update.subheader}}</p> <!-- Text -->
             </div>
         </li>
     </ul>
