@@ -27,8 +27,10 @@ io.on('connection', function(socket){
 
         var exec = require('child_process').exec;
         var child;
+        var buildCommand = "phonegap build yo";
+        
         // executes `pwd`
-        child = exec("phonegap build yo", function (error, stdout, stderr) {
+        child = exec(buildCommand, function (error, stdout, stderr) {
             console.log('stdout: ' + stdout);
             //console.log('stderr: ' + stderr);
             if (error !== null) {

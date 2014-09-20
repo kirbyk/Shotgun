@@ -65,6 +65,8 @@ hr {
     text-shadow:1px 1px 0px #577528;
 
     width: 20%;
+
+    margin: 2%;
 }
 #buildBTN:hover {
     opacity: 0.8;
