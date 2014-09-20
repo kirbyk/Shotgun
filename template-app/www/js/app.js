@@ -38,47 +38,57 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     // Each tab has its own nav history stack:
 
-    .state('tab.dash', {
-      url: '/dash',
+    .state('tab.updates', {
+      url: '/updates',
       views: {
-        'tab-dash': {
-          templateUrl: 'templates/tab-dash.html',
-          controller: 'DashCtrl'
+        'tab-updates': {
+          templateUrl: 'templates/tab-updates.html',
+          controller: 'UpdatesCtrl'
         }
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.mentors', {
+      url: '/mentors',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
+        'tab-mentors': {
+          templateUrl: 'templates/tab-mentors.html',
+          controller: 'MentorsCtrl'
         }
       }
     })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
+    .state('tab.mentor-detail', {
+      url: '/mentor/:mentorId',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
+        'tab-mentors': {
+          templateUrl: 'templates/mentor-detail.html',
+          controller: 'MentorDetailCtrl'
         }
       }
     })
 
-    .state('tab.account', {
-      url: '/account',
+    .state('tab.prizes', {
+      url: '/prizes',
       views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-account.html',
-          controller: 'AccountCtrl'
+        'tab-prizes': {
+          templateUrl: 'templates/tab-prizes.html',
+          controller: 'PrizesCtrl'
+        }
+      }
+    })
+
+    .state('tab.schedule', {
+      url: '/schedule',
+      views: {
+        'tab-schedule': {
+          templateUrl: 'templates/tab-schedule.html',
+          controller: 'ScheduleCtrl'
         }
       }
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/updates');
 
 });
 
