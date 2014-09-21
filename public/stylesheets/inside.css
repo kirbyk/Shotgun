@@ -202,40 +202,65 @@ body {
 }
 .backgrounds .thumb .congruent_outline {
   background-image: url('../images/thumbnails/congruent_outline.png');
-  background-size: 100%;
+  background-size: cover;
 }
 .backgrounds .thumb .congruent_pentagon {
   background-image: url('../images/thumbnails/congruent_pentagon.png');
-  background-size: 100%;
+  background-size: cover;
 }
 .backgrounds .thumb .grey_wash_wall {
   background-image: url('../images/thumbnails/grey_wash_wall.png');
-  background-size: 100%;
+  background-size: cover;
 }
 .backgrounds .thumb .noisy {
   background-image: url('../images/thumbnails/noisy.png');
-  background-size: 100%;
+  background-size: cover;
 }
 .backgrounds .thumb .small_steps {
   background-image: url('../images/thumbnails/small_steps.png');
-  background-size: 100%;
+  background-size: cover;
 }
 .backgrounds .thumb .sprinkles {
   background-image: url('../images/thumbnails/sprinkles.png');
-  background-size: 100%;
+  background-size: cover;
 }
 .backgrounds .thumb .tree_bark {
   background-image: url('../images/thumbnails/tree_bark.png');
-  background-size: 100%;
+  background-size: cover;
 }
 .backgrounds .thumb .triangular {
   background-image: url('../images/thumbnails/triangular.png');
-  background-size: 100%;
+  background-size: cover;
 }
 .backgrounds .thumb .white {
   background-image: url('../images/thumbnails/white.png');
-  background-size: 100%;
+  background-size: cover;
 }
+.backgrounds .thumb .p1 {
+  background-image: url('../images/thumbnails/p1.png');
+  background-size: cover;
+}
+.backgrounds .thumb .p2 {
+  background-image: url('../images/thumbnails/p2.png');
+  background-size: cover;
+}
+.backgrounds .thumb .p3 {
+  background-image: url('../images/thumbnails/p3.png');
+  background-size: cover;
+}
+.backgrounds .thumb .p4 {
+  background-image: url('../images/thumbnails/p4.png');
+  background-size: cover;
+}
+.backgrounds .thumb .p5 {
+  background-image: url('../images/thumbnails/p5.png');
+  background-size: cover;
+}
+.backgrounds .thumb .p6 {
+  background-image: url('../images/thumbnails/p6.png');
+  background-size: cover;
+}
+
 .backgrounds .thumb:hover {
   cursor: pointer;
   background-color: #BDC3C7;
