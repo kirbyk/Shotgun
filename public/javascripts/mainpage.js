@@ -221,13 +221,15 @@ $(document).ready(function() {
         var header = $('#scheduleNameInput').val();
         var description = $('#scheduleDescInput').val();
         var time = $('#scheduleTimeInput').val();
+        var date = $('#scheduleDateInput').val();
         var location = $('#scheduleLocationInput').val();
 
         //add the new mentor if fields not empty
-        if(header != '' && description != '' && time != '' && location != '') {
-            scheduleRef.push({header: header, description: description, time: time, location: location});
+        if(date != null && header != '' && description != '' && time != '' && location != '') {
+            scheduleRef.child(date).push({header: header, description: description, time: time, location: location});
             $('#scheduleNameInput').val('');
             $('#scheduleDescInput').val('');
+            $('#scheduleDateInput').val('');
             $('#scheduleTimeInput').val('');
             $('#scheduleLocationInput').val('');
             enabled = false;
@@ -250,6 +252,7 @@ $(document).ready(function() {
                                       theme: currentTheme,
                                       color: $('#colorPrimary').val(),
                                       bg: bgfinal});
+
 
         //reset the colors
         // $('#colorMain').val('');
