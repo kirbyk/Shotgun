@@ -1,6 +1,7 @@
 body {
     background: none;
     background-color: white;
+    position: fixed;
 }
 
 
@@ -100,12 +101,14 @@ body {
     height: 100%;
     padding-top: 3em;
     box-sizing: border-box;
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    background-position: center;
 }
 .content .preview {
     position: relative;
     width: 50%;
     height: 100%;
-    background-color: red;
     float: left;
 }
 .content .inputs {
@@ -115,6 +118,7 @@ body {
     float: left;
     box-sizing: border-box;
     padding: 0 5%;
+    background-color: rgba(255,255,255,0.8);
 }
 .content .inputs label {
     position: relative;
@@ -202,7 +206,6 @@ body {
 }
 
 #devices {
-  background-color: #73c9ad;
   width:100%;
   height:100%;
   padding: 3em 0 18em;
