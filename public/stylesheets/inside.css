@@ -103,12 +103,14 @@ body {
     background-image: url('../images/bg.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 .content .preview {
     position: relative;
     width: 50%;
     height: 100%;
     float: left;
+    overflow: hidden;
 }
 .content .inputs {
     position: relative;
@@ -118,6 +120,7 @@ body {
     box-sizing: border-box;
     padding: 0 5%;
     background-color: rgba(255,255,255,0.8);
+    overflow: scroll;
 }
 .content .inputs label {
     position: relative;
@@ -246,6 +249,38 @@ body {
   background-color: #95A5A6;
 }
 
+.content .inputs .addThree .theme input {
+  position: relative;
+  width: 50%;
+  float: left;
+  border-radius: 0 4px 4px 0;
+}
+.content .inputs .addThree .theme input:hover {
+  cursor: pointer;
+}
+.content .inputs .addThree .theme input:focus {
+  box-shadow: none;
+}
+.content .inputs .addThree .theme input:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.content .inputs .addThree .theme input#light {
+  background-color: white;
+  opacity: 0.4;
+}
+.content .inputs .addThree .theme input#light.selected {
+  box-shadow: none;
+  opacity: 1;
+}
+.content .inputs .addThree .theme input#dark {
+  background-color: #2C3E50;
+  color: white;
+  opacity: 0.4;
+}
+.content .inputs .addThree .theme input#dark.selected {
+  box-shadow: none;
+  opacity: 1;
+}
 
 
 
@@ -270,6 +305,7 @@ body {
   border-radius: 100%;
   color: #E74C3C;
   margin: 0 auto;
+  margin-bottom: 2em;
 }
 .content .inputs .addThree .save:hover {
   cursor: pointer;

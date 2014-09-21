@@ -1,5 +1,6 @@
 var activeView = 0;
 var enabled = true;
+var bgname;
 var views = [
     '#mainInput',
     '#updatesInput',
@@ -15,15 +16,38 @@ var viewIDs = [
     '#schedule'
 ];
 
+function getbgvalue() {
+    return bgname;
+}
+
+function toggleTheme(el) {
+    console.log(el);
+    if (el == 'light') {
+        $('#light').addClass('selected');
+        $('#dark').removeClass('selected');
+        $("#mobile-preview-content").contents().find('ion-nav-bar, .tabs').css('background-color', '#ECF0F1');
+        $("#mobile-preview-content").contents().find('.tab-item .icon, .tab-item .tab-title, .title').css('color', '#2C3E50');
+    }
+    else {
+        $('#dark').addClass('selected');
+        $('#light').removeClass('selected');
+        $("#mobile-preview-content").contents().find('ion-nav-bar, .tabs, .bar').css('background-color', '#2C3E50');
+        $("#mobile-preview-content").contents().find('.tab-item .icon, .tab-item .tab-title, .title').css('color', 'white');
+    }
+}
+
 
 $(document).ready(function() {
+
+
+
 
     $('.thumb').click(function(event) {
         $('.thumb').removeClass('clicked');
         $(this).addClass('clicked');
-        var bgname = $(this).children().attr('class') + '.png';
-        bgname = 'url("../images/thumnails/' + bgname + '")';
-        console.log(bgname);
+        bgname = $(this).children().attr('class') + '.png';
+        bgname = 'url("img/thumbnails/' + bgname + '")';
+        $("#mobile-preview-content").contents().find('.pane').css({'background-image':bgname});
     });
 
 

@@ -33,10 +33,13 @@ block content
                 input#schedule(type="submit" value="SCHEDULE")
             .break3em
 
-            .addThree.cf#mainInput
+            .addThree.cf#mainInput(ng-controller="colors")
                 input(type="text" name="name" placeholder="Event Name")
-                input(type="text" name="name" placeholder="Primary Color")
-                input(type="text" name="name" placeholder="Secondary Color")
+                input(type="text" name="name" placeholder="Primary Color" colorpicker ng-model="color1")
+                .theme
+                    input.selected#light(type="Submit" name="Light" value="LIGHT" onclick="toggleTheme('light')")
+                    input#dark(type="Submit" name="Dark" value="DARK" onclick="toggleTheme('dark')")
+                input#background(style="display:none;" ng-model="bgimage" value="")
                 .backgrounds
                     .thumb
                         .congruent_outline

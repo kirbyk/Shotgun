@@ -2,7 +2,9 @@
   <ion-content class="padding">
     <ion-list class="list prizes">
       <div ng-repeat="(name, day) in days" class="card">
-        {{name}}
+        <ion-item class="item item-divider">
+            <h4>{{name}}</h4>
+        </ion-item>
         <div ng-repeat="activity in day">
           <ion-item class="item item-divider">
             {{activity.time}}
