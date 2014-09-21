@@ -52,8 +52,8 @@ block content
 
             .addThree.updates#updatesInput(style='display:none;')
 
-                input.inputField(type='text', placeholder='Update Name')
-                input.inputField(type='text', placeholder='Update Description')
+                input#updateNameInput.inputField(type='text', placeholder='Update Name')
+                input#updateDescInput.inputField(type='text', placeholder='Update Description')
                 input.add(type='Submit' id='addUpdate' value='Add Update')
 
 
@@ -63,23 +63,25 @@ block content
                 input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
                 input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
                 input.add(type='Submit' id='addMentor' value='Add Mentor')
-    
+
 
             .addThree.prizes#prizesInput(style='display:none;')
 
-                input.inputField(type='text', placeholder='Company Name')
-                input.inputField(type='text', placeholder='Prize Name')
-                input.inputField(type='text', placeholder='Prize Description')
-                input.add(type='Submit' id='addMentor' value='Add Prize')
+                input#prizeCompanyNameInput.inputField(type='text', placeholder='Company Name')
+                input#prizeTitleInput.inputField(type='text', placeholder='Prize Title')
+                input#prizeDescInput.inputField(type='text', placeholder='Prize Description')
+                input#prizeAwardInput.inputField(type='text', placeholder='Prize Award')
+                input.add(type='Submit' id='addPrize' value='Add Prize')
 
             .addThree.schedule#scheduleInput(style='display:none;')
 
-                input.inputField(type='text', placeholder='Event Name')
-                input.inputField(type='text', placeholder='Event Location')
-                input.inputField(type='text', placeholder='Event Description')
-                input.add(type='Submit' id='addMentor' value='Add Event')
+                input#eventNameInput.inputField(type='text', placeholder='Event Name')
+                input#eventTimeInput.inputField(type='text', placeholder='Event Time')
+                input#eventLocationInput.inputField(type='text', placeholder='Event Location')
+                input#eventDescInput.inputField(type='text', placeholder='Event Description')
+                input.add(type='Submit' id='addEvent' value='Add Event')
 
-
+        div(id="updateField")
     //- .addThree
     //-     input(type="text" name="name" placeholder="Event Name")
     //-     input(type="text" name="hexes" placeholder="Primary color")
