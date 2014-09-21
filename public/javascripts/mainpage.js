@@ -55,10 +55,14 @@ month[11] = "December";
 
 var myDataRef = new Firebase('https://easy-app.firebaseio.com/');
 
+var categoryNames = [];
+
 var fireCounter = 0
 // Populate the local arrays for data store/manipulation
 myDataRef.on('child_added', function (snapshot) {
-    //console.log("CHILD");
+    //console.log("CHILD: "+snapshot.ref());
+    var regX = /[a-z]*$/;
+    categoryNames[fireCounter] = regX.exec(snapshot.ref());
     fireBaseData[fireCounter] = snapshot.val();
     fireCounter++;
 });
@@ -100,51 +104,51 @@ function toggleTable() {
         elementsInDisplayArray = [];
         //console.log("Try to populate that array yo")
         //populating the table dam this would be nice with some angular.jssssss
-        switch(activeView) {
-            case 1: //updates 4 in firebase
-                var i = 0;
-                for(update in fireBaseData[4]) {
+        var k = 0;
+        for(category in fireBaseData) {
+            //console.log ("That name yo "+ fireBaseData[category].toString());
+            var i = 0;
+            if(categoryNames[k] == 'updates' && activeView == 1) {
+                for(update in fireBaseData[k]) {
                     elementsInDisplayArray[i] = [];
-                    elementsInDisplayArray[i][0] = fireBaseData[4][update].header;
-                    elementsInDisplayArray[i][1] = fireBaseData[4][update].subheader;
+                    elementsInDisplayArray[i][0] = fireBaseData[k][update].header + " - " + fireBaseData[k][update].createdAt;
+                    elementsInDisplayArray[i][1] = fireBaseData[k][update].subheader;
                     elementsInDisplayArray[i][2] = "https://easy-app.firebaseio.com/updates/" + update;
                     i++;
                 }
-            break;
-            case 2: //mentors 1 in firebase
-                var i = 0;
-                for(companies in fireBaseData[1]) {
-                    for(mentors in fireBaseData[1][companies]) {
+            }
+            if(categoryNames[k] == 'mentors' && activeView == 2) {
+                for(companies in fireBaseData[k]) {
+                    for(mentors in fireBaseData[k][companies]) {
                         elementsInDisplayArray[i] = [];
-                        elementsInDisplayArray[i][0] = companies + " - " + fireBaseData[1][companies][mentors].name;
-                        elementsInDisplayArray[i][1] = fireBaseData[1][companies][mentors].skills;
+                        elementsInDisplayArray[i][0] = companies + " - " + fireBaseData[k][companies][mentors].name;
+                        elementsInDisplayArray[i][1] = fireBaseData[k][companies][mentors].skills;
                         elementsInDisplayArray[i][2] = "https://easy-app.firebaseio.com/mentors/" + companies + "/" + mentors;
                         i++;
                     }
                 }
-            break;
-            case 3: //prizes 2 in firebase
-                var i = 0;
-                for(prize in fireBaseData[2]) {
+            }
+            if(categoryNames[k] == 'prizes' && activeView == 3) {
+                for(prize in fireBaseData[k]) {
                     elementsInDisplayArray[i] = [];
-                    elementsInDisplayArray[i][0] = fireBaseData[2][prize].award + " - " + fireBaseData[2][prize].company;
-                    elementsInDisplayArray[i][1] = fireBaseData[2][prize].description;
-                    elementsInDisplayArray[i][2] = "https://easy-app.firebaseio.com/updates/" + prize;
+                    elementsInDisplayArray[i][0] = fireBaseData[k][prize].award + " - " + fireBaseData[k][prize].company;
+                    elementsInDisplayArray[i][1] = fireBaseData[k][prize].description;
+                    elementsInDisplayArray[i][2] = "https://easy-app.firebaseio.com/prizes/" + prize;
                     i++;
                 }
-            break;
-            case 4: //schedule 3 in firebase
-                var i = 0;
-                for(days in fireBaseData[3]) {
-                    for(anEvent in fireBaseData[3][days]) {
+            }
+            if(categoryNames[k] == 'schedule' && activeView == 4) {
+                for(days in fireBaseData[k]) {
+                    for(anEvent in fireBaseData[k][days]) {
                         elementsInDisplayArray[i] = [];
-                        elementsInDisplayArray[i][0] = fireBaseData[3][days][anEvent].header + " - " + days + " - " + fireBaseData[3][days][anEvent].time;
-                        elementsInDisplayArray[i][1] = fireBaseData[3][days][anEvent].description;
-                        elementsInDisplayArray[i][2] = "https://easy-app.firebaseio.com/mentors/" + days + "/" + anEvent;
+                        elementsInDisplayArray[i][0] = fireBaseData[k][days][anEvent].header + " - " + days + " - " + fireBaseData[k][days][anEvent].time;
+                        elementsInDisplayArray[i][1] = fireBaseData[k][days][anEvent].description;
+                        elementsInDisplayArray[i][2] = "https://easy-app.firebaseio.com/schedule/" + days + "/" + anEvent;
                         i++;
                     }
                 }
-            break;
+            }
+            k++;
         }
 
         //clear pre-exisitng  table and repopulate with new data
@@ -161,17 +165,25 @@ function toggleTable() {
         $('#existingTable').fadeIn(250);
     }
     else {
+        console.log("NOOPBEBPEOBESD");
         $('#existingTable').fadeOut(250);
     }
 }
 
 function deleteData(numberToDelete) {
-    console.log("About to try to destroy.");
-    console.log("Destroy at url: "+ elementsInDisplayArray[numberToDelete][2]);
+    //console.log("About to try to destroy.");
+    //console.log("Destroy at url: "+ elementsInDisplayArray[numberToDelete][2]);
     var remRef = new Firebase(elementsInDisplayArray[numberToDelete][2]);
     remRef.remove();
 
-    toggleTable();
+    //
+
+    $('#existingTable').fadeOut(250, function() {
+        $("#existingTable").children().remove();
+        toggleTable();
+        $('#existingTable').fadeIn(250);
+        //console.log("It should have deleted.");
+    });
 }
 
 $(document).ready(function() {
@@ -302,7 +314,7 @@ $(document).ready(function() {
             $('#mentorDescriptionInput').val('');
             enabled = false;
             viewTableAllowed[activeView] = true;
-            $('#mentorFields').fadeOut(250, function() {
+            $('#mentorsFields').fadeOut(250, function() {
                 $('#expandMentor').fadeIn(250);
                 toggleTable();
             });
@@ -339,9 +351,11 @@ $(document).ready(function() {
             updateRef.push({createdAt: dateString, header: header, subheader: subheader});
             enabled = false;
             viewTableAllowed[activeView] = true;
-            $('#updateFields').fadeOut(250, function() {
+            console.log("UPDATE THEM DAMMIT");
+            $('#updatesFields').fadeOut(250, function() {
                 $('#expandUpdates').fadeIn(250);
                 toggleTable();
+                console.log("IT SHOULD HAVE LOL");
             });
         }
         else if (enabled) {
@@ -373,6 +387,7 @@ $(document).ready(function() {
             enabled = false;
             viewTableAllowed[activeView] = true;
             $('#prizesFields').fadeOut(250, function() {
+                console.log("Add some prize and get me back!");
                 $('#expandPrizes').fadeIn(250);
                 toggleTable();
             });
