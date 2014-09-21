@@ -30,40 +30,53 @@ block content
         .inputs
             .break3em
             .rowButtons.cf
-                input#main(type="submit" value="MAIN")
+                input#main.focus(type="submit" value="MAIN")
                 input#updates(type="submit" value="UPDATES")
                 input#mentors(type="submit" value="MENTORS")
                 input#prizes(type="submit" value="PRIZES")
                 input#schedule(type="submit" value="SCHEDULE")
             .break3em
-            .addThree#mainInput
-                label.cf(for="name") Event Name
-                input(type="text" name="name")
-                .block.cf
-                    label.colors(for="name") Color 1
-                    label.colors(for="name") Color 2
-                    label.colors(for="name") Color 3
-                .block.cf
-                    input.colors(type="text" name="name")
-                    input.colors(type="text" name="name")
-                    input.colors(type="text" name="name")
-                label.cf(for="") Upload a Logo
-                input(type='filepicker', data-fp-apikey='AAhXvilT1RIaTrxakvtWnz', data-fp-mimetypes='*/*', data-fp-container='modal', data-fp-services='COMPUTER,DROPBOX,GOOGLE_DRIVE,URL', onchange='filePicked(event)' data-fp-button-text="UPLOAD")
+            .addThree.cf#mainInput
+                input(type="text" name="name" placeholder="Event Name")
+                input(type="text" name="name" placeholder="Primary Color")
+                input(type="text" name="name" placeholder="Secondary Color")
+                .backgrounds
+                    .thumb
+                        .congruent_outline
+                    .thumb
+                        .congruent_pentagon
+                    .thumb
+                        .grey_wash_wall
+                    .thumb
+                        .noisy
+                    .thumb
+                        .small_steps
+                    .thumb
+                        .sprinkles
+                    .thumb
+                        .tree_bark
+                    .thumb
+                        .triangular
+                    .thumb
+                        .white
+                input(type='filepicker', data-fp-apikey='AAhXvilT1RIaTrxakvtWnz', data-fp-mimetypes='*/*', data-fp-container='modal', data-fp-services='COMPUTER,DROPBOX,GOOGLE_DRIVE,URL', onchange='filePicked(event)' data-fp-button-text="UPLOAD LOGO")
+                .save
+                    h2 SAVE
 
             .addThree.updates#updatesInput(style='display:none;')
 
                 input#updateNameInput.inputField(type='text', placeholder='Update Name')
                 input#updateDescInput.inputField(type='text', placeholder='Update Description')
-                input.add(type='Submit' id='addUpdate' value='Add Update')
-
+                .save#addUpdate
+                    h2 SAVE
 
             .addThree.mentors#mentorsInput(style='display:none;')
 
                 input#mentorCompanyInput.inputField(type='text', placeholder='Mentor Company')
                 input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
                 input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
-                input.add(type='Submit' id='addMentor' value='Add Mentor')
-
+                .save#addMentor
+                    h2 SAVE
 
             .addThree.prizes#prizesInput(style='display:none;')
 
@@ -71,7 +84,8 @@ block content
                 input#prizeTitleInput.inputField(type='text', placeholder='Prize Title')
                 input#prizeDescInput.inputField(type='text', placeholder='Prize Description')
                 input#prizeAwardInput.inputField(type='text', placeholder='Prize Award')
-                input.add(type='Submit' id='addPrize' value='Add Prize')
+                .save#addPrize
+                    h2 SAVE
 
             .addThree.schedule#scheduleInput(style='display:none;')
 
@@ -79,8 +93,10 @@ block content
                 input#eventTimeInput.inputField(type='text', placeholder='Event Time')
                 input#eventLocationInput.inputField(type='text', placeholder='Event Location')
                 input#eventDescInput.inputField(type='text', placeholder='Event Description')
-                input.add(type='Submit' id='addEvent' value='Add Event')
+                .save#addEvent
+                    h2 SAVE
 
+            #updateField
         div(id="updateField")
     //- .addThree
     //-     input(type="text" name="name" placeholder="Event Name")

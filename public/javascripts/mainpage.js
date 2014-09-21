@@ -1,4 +1,5 @@
 var activeView = 0;
+var enabled = true;
 var views = [
     '#mainInput',
     '#updatesInput',
@@ -17,47 +18,76 @@ var viewIDs = [
 
 $(document).ready(function() {
 
+    $('.thumb').click(function(event) {
+        $('.thumb').removeClass('clicked');
+        $(this).addClass('clicked');
+        var bgname = $(this).children().attr('class') + '.png';
+        bgname = 'url("../images/thumnails/' + bgname + '")';
+        console.log(bgname);
+    });
+
 
     $('#main').click(function(event) {
         $(views[activeView]).fadeOut(250, function() {
             console.log("Get element: "+viewIDs[activeView]);
-            document.getElementById('#main').style.opacity = 1.0;
+            // document.getElementById('#main').style.opacity = 1.0;
             activeView = 0;
-            document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
+            // document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#mainInput').fadeIn(250);
         });
     });
     $('#updates').click(function(event) {
         $(views[activeView]).fadeOut(250, function() {
-            document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
+            // document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 1;
-            document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
+            // document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#updatesInput').fadeIn(250);
         });
     });
     $('#mentors').click(function(event) {
         $(views[activeView]).fadeOut(250, function() {
-            document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
+            // document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 2;
-            document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
+            // document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#mentorsInput').fadeIn(250);
         });
     });
     $('#prizes').click(function(event) {
         $(views[activeView]).fadeOut(250, function() {
-            document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
+            // document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 3;
-            document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
+            // document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#prizesInput').fadeIn(250);
         });
     });
     $('#schedule').click(function(event) {
         $(views[activeView]).fadeOut(250, function() {
-            document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
+            // document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 4;
-            document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
+            // document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#scheduleInput').fadeIn(250);
         });
+    });
+
+    $('#main').focus(function(event) {
+        $('#main, #updates, #mentors, #prizes, #schedule').removeClass('focus');
+        $(this).addClass('focus');
+    });
+    $('#updates').focus(function(event) {
+        $('#main, #updates, #mentors, #prizes, #schedule').removeClass('focus');
+        $(this).addClass('focus');
+    });
+    $('#mentors').focus(function(event) {
+        $('#main, #updates, #mentors, #prizes, #schedule').removeClass('focus');
+        $(this).addClass('focus');
+    });
+    $('#prizes').focus(function(event) {
+        $('#main, #updates, #mentors, #prizes, #schedule').removeClass('focus');
+        $(this).addClass('focus');
+    });
+    $('#schedule').focus(function(event) {
+        $('#main, #updates, #mentors, #prizes, #schedule').removeClass('focus');
+        $(this).addClass('focus');
     });
 
 
@@ -78,8 +108,9 @@ $(document).ready(function() {
             $('#mentorNameInput').val('');
             $('#mentorCompanyInput').val('');
             $('#mentorDescriptionInput').val('');
+            enabled = false;
         }
-        else
+        else if (enabled)
             alert("Please fill in all of the fields.");
     });
     mentorRef.on('child_added', function(snapshot) {
@@ -89,7 +120,7 @@ $(document).ready(function() {
     });
 
     //update additions
-    var updateRef = myDataRef.child("updates")
+    var updateRef = myDataRef.child("updates");
     $('#addUpdate').click(function() {
         //recieve new values
         var header = $('#updateNameInput').val();
@@ -97,19 +128,23 @@ $(document).ready(function() {
 
         var currentDate = new Date();
         var dateString = (currentDate.getHours()%12.0) + ":" + currentDate.getMinutes();
-        if(currentDate.getHours() > 12.0)
-            dateString += " pm";
-        else
-            dateString += " am";
+        if (currentDate.getHours() > 12.0) {
+            dateString += " PM";
+        }
+        else {
+            dateString += " AM";
+        }
 
         //add the new mentor if fields not empty
-        if(header != '' && subheader != '') {
-            updateRef.push({createdAt: dateString, header: header, subheader: subheader});
+        if (header !== '' && subheader !== '') {
             $('#updateNameInput').val('');
             $('#updateDescInput').val('');
+            updateRef.push({createdAt: dateString, header: header, subheader: subheader});
+            enabled = false;
         }
-        else
+        else if (enabled) {
             alert("Please fill in all of the fields.");
+        }
     });
     updateRef.on('child_added', function(snapshot) {
         //response recieved from server
@@ -133,8 +168,9 @@ $(document).ready(function() {
             $('#prizeTitleInput').val('');
             $('#prizeDescInput').val('');
             $('#prizeAwardInput').val('');
+            enabled = false;
         }
-        else
+        else if (enabled)
             alert("Please fill in all of the fields.");
     });
     prizeRef.on('child_added', function(snapshot) {
@@ -159,8 +195,9 @@ $(document).ready(function() {
             $('#scheduleDescInput').val('');
             $('#scheduleTimeInput').val('');
             $('#scheduleLocationInput').val('');
+            enabled = false;
         }
-        else
+        else if (enabled)
             alert("Please fill in all of the fields.");
     });
     scheduleRef.on('child_added', function(snapshot) {
@@ -214,6 +251,9 @@ $(document).ready(function() {
     }
 
     function successfulUpdate() {
+        window.setTimeout(function() {
+            enabled = true;
+        }, 1000);
         console.log("Application updated");
         //add later a green fade in.
         $('#updateField').val('Application Update Successful!');
