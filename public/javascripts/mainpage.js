@@ -25,6 +25,7 @@ var viewTableAllowed = [
     true
 ];
 
+var remRef = new Firebase('https://easy-app.firebaseio.com/');
 var fireBaseData = [];
 var elementsInDisplayArray = [];
 
@@ -67,6 +68,12 @@ myDataRef.on('child_added', function (snapshot) {
     fireCounter++;
 });
 
+// Get the data on a post that has been removed
+myDataRef.on('child_removed', function (snapshot) {
+    console.log("Something happened!");
+    toggleTable();
+});
+
 function getbgvalue() {
     return bgname;
 }
@@ -97,12 +104,13 @@ function openLogin(el) {
 
 //turns table on/off and will populate it with firebase data
 function toggleTable() {
+    console.log("table called");
     //var lTable = document.getElementById("existingTable");
     //lTable.style.display = (lTable.style.display == "table") ? "none" : "table";
     if(viewTableAllowed[activeView]) {
         document.getElementById("existingTable").style.display = "initial";//maybe table
         elementsInDisplayArray = [];
-        //console.log("Try to populate that array yo")
+        console.log("Try to populate that array yo")
         //populating the table dam this would be nice with some angular.jssssss
         var k = 0;
         for(category in fireBaseData) {
@@ -154,6 +162,7 @@ function toggleTable() {
         //clear pre-exisitng  table and repopulate with new data
         $("#existingTable").children().remove();
         for(var i = 0; i < elementsInDisplayArray.length; i++) {
+            console.log("Making moves yo");
             var element = document.createElement("div");
             element.innerHTML = "<input onclick=\"deleteData(" + i + ")\"; type=\"submit\"; value=\"\u2A2F\";></input><h2>"+ elementsInDisplayArray[i][0] +"</h2><p>" + elementsInDisplayArray[i][1] + "</p>";
             element.className = "entry";
@@ -173,9 +182,12 @@ function toggleTable() {
 function deleteData(numberToDelete) {
     //console.log("About to try to destroy.");
     //console.log("Destroy at url: "+ elementsInDisplayArray[numberToDelete][2]);
-    var remRef = new Firebase(elementsInDisplayArray[numberToDelete][2]);
+    remRef = new Firebase(elementsInDisplayArray[numberToDelete][2]);
     remRef.remove();
-
+    remRef.on('child_removed', function (snapshot) {
+        console.log("Something happened!");
+        toggleTable();
+    });
     //
 
     $('#existingTable').fadeOut(250, function() {
@@ -185,6 +197,11 @@ function deleteData(numberToDelete) {
         //console.log("It should have deleted.");
     });
 }
+
+remRef.on('child_removed', function (snapshot) {
+    console.log("Something happened!");
+    toggleTable();
+});
 
 $(document).ready(function() {
 
@@ -380,6 +397,10 @@ $(document).ready(function() {
         //add the new mentor when fields populated
         if(company != '' && title != '' && desc != '' && award != '') {
             prizeRef.push({award: award, company: company, title: title, description: desc});
+            prizeRef.on('child_added', function (snapshot) {
+                console.log("Something happened!");
+                toggleTable();
+            });
             $('#prizeCompanyNameInput').val('');
             $('#prizeTitleInput').val('');
             $('#prizeDescInput').val('');
@@ -423,8 +444,9 @@ $(document).ready(function() {
             enabled = false;
             viewTableAllowed[activeView] = true;
             $('#scheduleFields').fadeOut(250, function() {
-                $('#expandSchedule').fadeIn(250);
                 toggleTable();
+                $('#expandSchedule').fadeIn(250);
+
 
             });
         }
