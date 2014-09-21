@@ -262,11 +262,8 @@ $(document).ready(function() {
         var socket = io();
 
         //send the colors chosen
-        if($('#scheduleLocationInput').val() != '') {
-            socket.emit('build request');
-        }
-        else
-            alert("Your event needs a name!!");
+        socket.emit('build request');
+
         // socket.emit('build request', {appName: "POTATO",
         //                               color1: $('#colorMain').val(),
         //                               color2: $('#colorSecondary').val(),
