@@ -26,6 +26,8 @@ var viewTableAllowed = [
 ];
 
 var fireBaseData = [];
+var elementsInDisplayArray = [];
+
 
 //to get names in easy format
 var weekday = new Array(7);
@@ -95,7 +97,7 @@ function toggleTable() {
     //lTable.style.display = (lTable.style.display == "table") ? "none" : "table";
     if(viewTableAllowed[activeView]) {
         document.getElementById("existingTable").style.display = "initial";//maybe table
-        var elementsInDisplayArray = [];
+        elementsInDisplayArray = [];
         //console.log("Try to populate that array yo")
         //populating the table dam this would be nice with some angular.jssssss
         switch(activeView) {
@@ -105,6 +107,7 @@ function toggleTable() {
                     elementsInDisplayArray[i] = [];
                     elementsInDisplayArray[i][0] = fireBaseData[4][update].header;
                     elementsInDisplayArray[i][1] = fireBaseData[4][update].subheader;
+                    elementsInDisplayArray[i][2] = "https://easy-app.firebaseio.com/updates/" + update;
                     i++;
                 }
             break;
@@ -115,6 +118,7 @@ function toggleTable() {
                         elementsInDisplayArray[i] = [];
                         elementsInDisplayArray[i][0] = companies + " - " + fireBaseData[1][companies][mentors].name;
                         elementsInDisplayArray[i][1] = fireBaseData[1][companies][mentors].skills;
+                        elementsInDisplayArray[i][2] = "https://easy-app.firebaseio.com/mentors/" + companies + "/" + mentors;
                         i++;
                     }
                 }
@@ -125,6 +129,7 @@ function toggleTable() {
                     elementsInDisplayArray[i] = [];
                     elementsInDisplayArray[i][0] = fireBaseData[2][prize].award + " - " + fireBaseData[2][prize].company;
                     elementsInDisplayArray[i][1] = fireBaseData[2][prize].description;
+                    elementsInDisplayArray[i][2] = "https://easy-app.firebaseio.com/updates/" + prize;
                     i++;
                 }
             break;
@@ -135,6 +140,7 @@ function toggleTable() {
                         elementsInDisplayArray[i] = [];
                         elementsInDisplayArray[i][0] = fireBaseData[3][days][anEvent].header + " - " + days + " - " + fireBaseData[3][days][anEvent].time;
                         elementsInDisplayArray[i][1] = fireBaseData[3][days][anEvent].description;
+                        elementsInDisplayArray[i][2] = "https://easy-app.firebaseio.com/mentors/" + days + "/" + anEvent;
                         i++;
                     }
                 }
@@ -144,9 +150,9 @@ function toggleTable() {
         //clear pre-exisitng  table and repopulate with new data
         $("#existingTable").children().remove();
         for(var i = 0; i < elementsInDisplayArray.length; i++) {
-            var element = document.createElement("entry");
-            element.innerHTML = "<input type=\"submit\"; value=\"\u2A2F\";></input><h2>"+ elementsInDisplayArray[i][0] +"</h2><p>" + elementsInDisplayArray[i][1] + "</p>";
-            //element.class = ".entry";
+            var element = document.createElement("div");
+            element.innerHTML = "<input onclick=\"deleteData(" + i + ")\"; type=\"submit\"; value=\"\u2A2F\";></input><h2>"+ elementsInDisplayArray[i][0] +"</h2><p>" + elementsInDisplayArray[i][1] + "</p>";
+            element.className = "entry";
 
             document.getElementById("existingTable").appendChild(element);
         }
@@ -157,6 +163,15 @@ function toggleTable() {
     else {
         $('#existingTable').fadeOut(250);
     }
+}
+
+function deleteData(numberToDelete) {
+    console.log("About to try to destroy.");
+    console.log("Destroy at url: "+ elementsInDisplayArray[numberToDelete][2]);
+    var remRef = new Firebase(elementsInDisplayArray[numberToDelete][2]);
+    remRef.remove();
+
+    toggleTable();
 }
 
 $(document).ready(function() {
@@ -286,6 +301,11 @@ $(document).ready(function() {
             $('#mentorCompanyInput').val('');
             $('#mentorDescriptionInput').val('');
             enabled = false;
+            viewTableAllowed[activeView] = true;
+            $('#mentorFields').fadeOut(250, function() {
+                $('#expandMentor').fadeIn(250);
+                toggleTable();
+            });
         }
         else if (enabled)
             alert("Please fill in all of the fields.");
@@ -318,6 +338,11 @@ $(document).ready(function() {
             $('#updateDescInput').val('');
             updateRef.push({createdAt: dateString, header: header, subheader: subheader});
             enabled = false;
+            viewTableAllowed[activeView] = true;
+            $('#updateFields').fadeOut(250, function() {
+                $('#expandUpdates').fadeIn(250);
+                toggleTable();
+            });
         }
         else if (enabled) {
             alert("Please fill in all of the fields.");
@@ -346,6 +371,11 @@ $(document).ready(function() {
             $('#prizeDescInput').val('');
             $('#prizeAwardInput').val('');
             enabled = false;
+            viewTableAllowed[activeView] = true;
+            $('#prizesFields').fadeOut(250, function() {
+                $('#expandPrizes').fadeIn(250);
+                toggleTable();
+            });
         }
         else if (enabled)
             alert("Please fill in all of the fields.");
@@ -376,6 +406,12 @@ $(document).ready(function() {
             $('#scheduleTimeInput').val('');
             $('#scheduleLocationInput').val('');
             enabled = false;
+            viewTableAllowed[activeView] = true;
+            $('#scheduleFields').fadeOut(250, function() {
+                $('#expandSchedule').fadeIn(250);
+                toggleTable();
+
+            });
         }
         else if (enabled)
             alert("Please fill in all of the fields.");
@@ -409,41 +445,6 @@ $(document).ready(function() {
         // $('#colorHighlight').val('');
     });
 
-    //handle image loading (logo)
-    function handleFileSelect(evt) {
-        console.log("In handle");
-        var f = evt.target.files[0];
-        var reader = new FileReader();
-        reader.onload = (function(theFile) {
-            console.log("In load");
-            return function(e) {
-                var filePayload = e.target.result;
-                var imageLocation = myDataRef.child('/logoImage');
-                console.log("In sending!!");
+    function successfulUpdate () {}
 
-
-                document.getElementById("logo").src = e.target.result;
-
-                imageLocation.set(filePayload, function() {
-                    console.log("BONSAI");
-
-                    document.getElementById("logo").src = e.target.result;
-                    //$('#file-upload').hide();
-                });
-            };
-        })(f);
-        reader.readAsDataURL(f);
-    }
-
-    function successfulUpdate() {
-        window.setTimeout(function() {
-            enabled = true;
-        }, 1000);
-        //console.log("Application updated");
-        //add later a green fade in.
-        $('#updateField').val('Application Update Successful!');
-        $('#updateField').fadeIn(250, function() {
-            $('#updateField').fadeOut(30000);
-        });
-    }
 });

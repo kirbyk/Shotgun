@@ -58,7 +58,7 @@ io.on('connection', function(socket){
 
         var exec = require('child_process').exec;
         var child;
-        var buildCommand = "cd template-app && ionic emulate android";
+        var buildCommand = "cd template-app && ionic emulate ios";
 
         // executes `pwd`
         child = exec(buildCommand, function (error, stdout, stderr) {
