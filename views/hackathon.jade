@@ -80,38 +80,66 @@ block content
 
 
             .addThree.updates#updatesInput(style='display:none;')
-
-                input#updateNameInput.inputField(type='text', placeholder='Update Name')
-                input#updateDescInput.inputField(type='text', placeholder='Update Description')
-                .save#addUpdate
-                    h2 SAVE
+                #updatesFields(style="display:none;")
+                    input#updateNameInput.inputField(type='text', placeholder='Update Name')
+                    input#updateDescInput.inputField(type='text', placeholder='Update Description')
+                    .save#addUpdate
+                        h2 ADD
+                .save#expandUpdates
+                    h2 NEW
 
             .addThree.mentors#mentorsInput(style='display:none;')
 
-                input#mentorCompanyInput.inputField(type='text', placeholder='Mentor Company')
-                input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
-                input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
-                .save#addMentor
-                    h2 SAVE
+                #mentorsFields(style="display:none;")
+                    input#mentorCompanyInput.inputField(type='text', placeholder='Mentor Company')
+                    input#mentorNameInput.inputField(type='text', placeholder='Mentor Name')
+                    input#mentorDescriptionInput.inputField(type='text', placeholder='Mentor Skills')
+                    .save#addMentor
+                        h2 ADD
+                .save#expandMentor
+                    h2 NEW
 
             .addThree.prizes#prizesInput(style='display:none;')
-
-                input#prizeCompanyNameInput.inputField(type='text', placeholder='Company Name')
-                input#prizeTitleInput.inputField(type='text', placeholder='Prize Title')
-                input#prizeDescInput.inputField(type='text', placeholder='Prize Description')
-                input#prizeAwardInput.inputField(type='text', placeholder='Prize Award')
-                .save#addPrize
-                    h2 SAVE
+                #prizesFields(style="display:none;")
+                    input#prizeCompanyNameInput.inputField(type='text', placeholder='Company Name')
+                    input#prizeTitleInput.inputField(type='text', placeholder='Prize Title')
+                    input#prizeDescInput.inputField(type='text', placeholder='Prize Description')
+                    input#prizeAwardInput.inputField(type='text', placeholder='Prize Award')
+                    .save#addPrize
+                        h2 ADD
+                .save#expandPrizes
+                    h2 NEW
 
             .addThree.schedule#scheduleInput(style='display:none;')
+                #scheduleFields(style="display:none;")
+                    input#eventNameInput.inputField(type='text', placeholder='Event Name')
+                    input#eventDateInput.inputField(type='date', placeholder='Event Date')
+                    input#eventTimeInput.inputField(type='text', placeholder='Event Time')
+                    input#eventLocationInput.inputField(type='text', placeholder='Event Location')
+                    input#eventDescInput.inputField(type='text', placeholder='Event Description')
+                    .save#addEvent
+                        h2 ADD
+                .save#expandSchedule
+                    h2 NEW
 
-                input#eventNameInput.inputField(type='text', placeholder='Event Name')
-                input#eventDateInput.inputField(type='date', placeholder='Event Date')
-                input#eventTimeInput.inputField(type='text', placeholder='Event Time')
-                input#eventLocationInput.inputField(type='text', placeholder='Event Location')
-                input#eventDescInput.inputField(type='text', placeholder='Event Description')
-                .save#addEvent
-                    h2 SAVE
+            .table.cf
+                .entry
+                    input(type="submit" value="\u2A2F")
+                    h2 Name
+                    p Description goes somewhere in here.
+                .entry
+                    input(type="submit" value="\u2A2F")
+                    h2 Name
+                    p Description goes somewhere in here. goes somewhere in here.
+                .entry
+                    input(type="submit" value="\u2A2F")
+                    h2 Name
+                    p Description goes somewhere in here.
+                .entry
+                    input(type="submit" value="\u2A2F")
+                    h2 Name
+                    p Description goes somewhere in here.
+
 
             #updateField
         div(id="updateField")

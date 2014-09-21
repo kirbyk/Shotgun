@@ -49,7 +49,26 @@ function openLogin(el) {
 
 $(document).ready(function() {
 
-
+    $('#expandMentor').click(function(event) {
+        $(this).fadeOut(250, function() {
+            $('#mentorsFields').slideDown(250);
+        });
+    });
+    $('#expandUpdates').click(function(event) {
+        $(this).fadeOut(250, function() {
+            $('#updatesFields').slideDown(250);
+        });
+    });
+    $('#expandPrizes').click(function(event) {
+        $(this).fadeOut(250, function() {
+            $('#prizesFields').slideDown(250);
+        });
+    });
+    $('#expandSchedule').click(function(event) {
+        $(this).fadeOut(250, function() {
+            $('#scheduleFields').slideDown(250);
+        });
+    });
 
 
     $('.thumb').click(function(event) {
