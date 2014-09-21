@@ -3,8 +3,12 @@ extends layout
 block content
 
     .login
-        a(href="/home")
-            input(type="submit" value="LOG IN")
+        input(type="submit" value="LOG IN" onclick="openLogin(this)")
+        .fields(style="display:none;")
+            input(type="text" placeholder="USERNAME")
+            input(type="password" placeholder="PASSWORD")
+            a(href="/home")
+                input(type="submit" value="SUBMIT")
 
     .banner
         img(src="images/shotgun_logo.png", alt="")

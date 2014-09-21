@@ -24,23 +24,41 @@ io.on('connection', function(socket){
 
     socket.on('build request', function(msg){
         console.log('Attempting build.');
+        console.log(msg);
 
         // console.log("Color1: "+msg.color1);
 
         //file saver (for build prefs)
-        // var fs = require('fs');
+        var fs = require('fs');
 
         // var toWrite = msg.color1;
 
+        var text = "";
+        if (msg.theme == 'light') {
+            text += ".bar, .tabs { background-color: #ECF0F1; }\n"
+            text += ".tab-item .icon, .tab-item .tab-title, .title { color: #2C3E50; }\n";
+        }
+        else {
+            text += ".bar, .tabs { background-color: #2C3E50; }\n"
+            text += ".tab-item .icon, .tab-item .tab-title, .title { color: white; }\n";
+        }
+        if (msg.color != '#000000') {
+            text += ".tab-item .icon, .tab-item .tab-title, .title { color: " + msg.color + " !important; }\n";
+        }
+
+        text += ".pane { background-image: " + msg.bg + "; }";
+
+        console.log(text);
+
         // //writing a text file with name of the image and color schemes
-        // fs.writeFile(".public/build/"+msg.appName+"-colors.css", "COLOR", function (err) {
-        //     if (err) throw err;
-        //     console.log('New build css created.');
-        // });
+        fs.writeFile("./template-app/www/css/custom.css", text, function (err) {
+            if (err) throw err;
+            console.log('New build css created.');
+        });
 
         var exec = require('child_process').exec;
         var child;
-        var buildCommand = "cd template-app && ionic emulate ios";
+        var buildCommand = "cd template-app && ionic emulate android";
 
         // executes `pwd`
         child = exec(buildCommand, function (error, stdout, stderr) {

@@ -104,6 +104,30 @@ body {
        -o-transition: all .25s ease;
           transition: all .25s ease;
 }
+.login .fields input, .login .fields a input {
+  display: block;
+  background-color: #2C3E50;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+.login .fields input:focus {
+  box-shadow: none;
+  outline: none;
+}
+.login .fields > input {
+  margin-bottom: 0.5em;
+  background-color: white;
+  border: none;
+  color: #2C3E50;
+}
+
+
+
+
+
+
+
 
 
 

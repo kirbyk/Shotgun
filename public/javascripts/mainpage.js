@@ -1,6 +1,8 @@
 var activeView = 0;
 var enabled = true;
-var bgname;
+var bgname = 'url("img/thumbnails/white.png")';
+var bgfinal = 'url("../img/thumbnails/white.png")';
+var currentTheme = 'light';
 var views = [
     '#mainInput',
     '#updatesInput',
@@ -27,13 +29,21 @@ function toggleTheme(el) {
         $('#dark').removeClass('selected');
         $("#mobile-preview-content").contents().find('ion-nav-bar, .tabs').css('background-color', '#ECF0F1');
         $("#mobile-preview-content").contents().find('.tab-item .icon, .tab-item .tab-title, .title').css('color', '#2C3E50');
+        currentTheme = 'light';
     }
     else {
         $('#dark').addClass('selected');
         $('#light').removeClass('selected');
         $("#mobile-preview-content").contents().find('ion-nav-bar, .tabs, .bar').css('background-color', '#2C3E50');
         $("#mobile-preview-content").contents().find('.tab-item .icon, .tab-item .tab-title, .title').css('color', 'white');
+        currentTheme = 'dark';
     }
+}
+
+function openLogin(el) {
+    $(el).fadeOut(250, function() {
+        $('.fields').fadeIn(250);
+    });
 }
 
 
@@ -46,6 +56,7 @@ $(document).ready(function() {
         $('.thumb').removeClass('clicked');
         $(this).addClass('clicked');
         bgname = $(this).children().attr('class') + '.png';
+        bgfinal = 'url("../img/thumbnails/' + bgname + '")';
         bgname = 'url("img/thumbnails/' + bgname + '")';
         $("#mobile-preview-content").contents().find('.pane').css({'background-image':bgname});
     });
@@ -235,12 +246,10 @@ $(document).ready(function() {
         var socket = io();
 
         //send the colors chosen
-        socket.emit('build request');
-        // socket.emit('build request', {appName: "POTATO",
-        //                               color1: $('#colorMain').val(),
-        //                               color2: $('#colorSecondary').val(),
-        //                               color3: $('#colorHighlight').val(),
-        //                               imageName: "blah.jpg"});
+        socket.emit('build request', {appName: "POTATO",
+                                      theme: currentTheme,
+                                      color: $('#colorPrimary').val(),
+                                      bg: bgfinal});
 
         //reset the colors
         // $('#colorMain').val('');
