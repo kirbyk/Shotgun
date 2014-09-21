@@ -16,6 +16,30 @@ var viewIDs = [
     '#schedule'
 ];
 
+//to get names in easy format
+var weekday = new Array(7);
+weekday[0]=  "Sunday";
+weekday[1] = "Monday";
+weekday[2] = "Tuesday";
+weekday[3] = "Wednesday";
+weekday[4] = "Thursday";
+weekday[5] = "Friday";
+weekday[6] = "Saturday";
+
+var month = new Array();
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
+
 function getbgvalue() {
     return bgname;
 }
@@ -210,12 +234,13 @@ $(document).ready(function() {
         var header = $('#scheduleNameInput').val();
         var description = $('#scheduleDescInput').val();
         var time = $('#scheduleTimeInput').val();
-        var date = $('#scheduleDateInput').val();
+        var unparsedDate = document.getElementById('scheduleDateInput').valueAsDate;
+        var date = weekday[unparsedDate.getDay()] + ", " + month[unparsedDate.getMonth()] + " " + unparsedDate.getDate() + ", " + unparsedDate.getFullYear();
         var location = $('#scheduleLocationInput').val();
 
         //add the new mentor if fields not empty
         if(date != null && header != '' && description != '' && time != '' && location != '') {
-            scheduleRef.child(date).push({header: header, description: description, time: time, location: location});
+            scheduleRef.child(date).push({header: header, description: description, time: time, location: location, unparsedDate: unparsedDate});
             $('#scheduleNameInput').val('');
             $('#scheduleDescInput').val('');
             $('#scheduleDateInput').val('');
