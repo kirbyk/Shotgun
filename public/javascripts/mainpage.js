@@ -17,6 +17,15 @@ var viewIDs = [
     '#prizes',
     '#schedule'
 ];
+var viewTableAllowed = [
+    false,
+    true,
+    true,
+    true,
+    true
+];
+
+var fireBaseData = [];
 
 //to get names in easy format
 var weekday = new Array(7);
@@ -41,6 +50,16 @@ month[8] = "September";
 month[9] = "October";
 month[10] = "November";
 month[11] = "December";
+
+var myDataRef = new Firebase('https://easy-app.firebaseio.com/');
+
+var fireCounter = 0
+// Populate the local arrays for data store/manipulation
+myDataRef.on('child_added', function (snapshot) {
+    //console.log("CHILD");
+    fireBaseData[fireCounter] = snapshot.val();
+    fireCounter++;
+});
 
 function getbgvalue() {
     return bgname;
@@ -70,25 +89,102 @@ function openLogin(el) {
     });
 }
 
+//turns table on/off and will populate it with firebase data
+function toggleTable() {
+    //var lTable = document.getElementById("existingTable");
+    //lTable.style.display = (lTable.style.display == "table") ? "none" : "table";
+    if(viewTableAllowed[activeView]) {
+        document.getElementById("existingTable").style.display = "initial";//maybe table
+        var elementsInDisplayArray = [];
+        //console.log("Try to populate that array yo")
+        //populating the table dam this would be nice with some angular.jssssss
+        switch(activeView) {
+            case 1: //updates 4 in firebase
+                var i = 0;
+                for(update in fireBaseData[4]) {
+                    elementsInDisplayArray[i] = [];
+                    elementsInDisplayArray[i][0] = fireBaseData[4][update].header;
+                    elementsInDisplayArray[i][1] = fireBaseData[4][update].subheader;
+                    i++;
+                }
+            break;
+            case 2: //mentors 1 in firebase
+                var i = 0;
+                for(companies in fireBaseData[1]) {
+                    for(mentors in fireBaseData[1][companies]) {
+                        elementsInDisplayArray[i] = [];
+                        elementsInDisplayArray[i][0] = companies + " - " + fireBaseData[1][companies][mentors].name;
+                        elementsInDisplayArray[i][1] = fireBaseData[1][companies][mentors].skills;
+                        i++;
+                    }
+                }
+            break;
+            case 3: //prizes 2 in firebase
+                var i = 0;
+                for(prize in fireBaseData[2]) {
+                    elementsInDisplayArray[i] = [];
+                    elementsInDisplayArray[i][0] = fireBaseData[2][prize].award + " - " + fireBaseData[2][prize].company;
+                    elementsInDisplayArray[i][1] = fireBaseData[2][prize].description;
+                    i++;
+                }
+            break;
+            case 4: //schedule 3 in firebase
+                var i = 0;
+                for(days in fireBaseData[3]) {
+                    for(anEvent in fireBaseData[3][days]) {
+                        elementsInDisplayArray[i] = [];
+                        elementsInDisplayArray[i][0] = fireBaseData[3][days][anEvent].header + " - " + days + " - " + fireBaseData[3][days][anEvent].time;
+                        elementsInDisplayArray[i][1] = fireBaseData[3][days][anEvent].description;
+                        i++;
+                    }
+                }
+            break;
+        }
+
+        //clear pre-exisitng  table and repopulate with new data
+        $("#existingTable").children().remove();
+        for(var i = 0; i < elementsInDisplayArray.length; i++) {
+            var element = document.createElement("entry");
+            element.innerHTML = "<input type=\"submit\"; value=\"\u2A2F\";></input><h2>"+ elementsInDisplayArray[i][0] +"</h2><p>" + elementsInDisplayArray[i][1] + "</p>";
+            //element.class = ".entry";
+
+            document.getElementById("existingTable").appendChild(element);
+        }
+
+        //fade the table into view
+        $('#existingTable').fadeIn(250);
+    }
+    else {
+        $('#existingTable').fadeOut(250);
+    }
+}
 
 $(document).ready(function() {
 
     $('#expandMentor').click(function(event) {
+        viewTableAllowed[activeView] = false;
+        toggleTable();
         $(this).fadeOut(250, function() {
             $('#mentorsFields').slideDown(250);
         });
     });
     $('#expandUpdates').click(function(event) {
+        viewTableAllowed[activeView] = false;
+        toggleTable();
         $(this).fadeOut(250, function() {
             $('#updatesFields').slideDown(250);
         });
     });
     $('#expandPrizes').click(function(event) {
+        viewTableAllowed[activeView] = false;
+        toggleTable();
         $(this).fadeOut(250, function() {
             $('#prizesFields').slideDown(250);
         });
     });
     $('#expandSchedule').click(function(event) {
+        viewTableAllowed[activeView] = false;
+        toggleTable();
         $(this).fadeOut(250, function() {
             $('#scheduleFields').slideDown(250);
         });
@@ -110,6 +206,7 @@ $(document).ready(function() {
             console.log("Get element: "+viewIDs[activeView]);
             // document.getElementById('#main').style.opacity = 1.0;
             activeView = 0;
+            toggleTable();
             // document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#mainInput').fadeIn(250);
         });
@@ -118,6 +215,7 @@ $(document).ready(function() {
         $(views[activeView]).fadeOut(250, function() {
             // document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 1;
+            toggleTable();
             // document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#updatesInput').fadeIn(250);
         });
@@ -126,6 +224,7 @@ $(document).ready(function() {
         $(views[activeView]).fadeOut(250, function() {
             // document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 2;
+            toggleTable();
             // document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#mentorsInput').fadeIn(250);
         });
@@ -134,6 +233,7 @@ $(document).ready(function() {
         $(views[activeView]).fadeOut(250, function() {
             // document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 3;
+            toggleTable();
             // document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#prizesInput').fadeIn(250);
         });
@@ -142,10 +242,13 @@ $(document).ready(function() {
         $(views[activeView]).fadeOut(250, function() {
             // document.getElementById(viewIDs[activeView]).style.opacity = 1.0;
             activeView = 4;
+            toggleTable();
             // document.getElementById(viewIDs[activeView]).style.opacity = 0.8;
             $('#scheduleInput').fadeIn(250);
         });
     });
+
+
 
     $('#main').focus(function(event) {
         $('#main, #updates, #mentors, #prizes, #schedule').removeClass('focus');
@@ -167,10 +270,6 @@ $(document).ready(function() {
         $('#main, #updates, #mentors, #prizes, #schedule').removeClass('focus');
         $(this).addClass('focus');
     });
-
-
-
-    var myDataRef = new Firebase('https://easy-app.firebaseio.com/');
 
     //mentor additions
     var mentorRef = myDataRef.child("mentors")
@@ -340,7 +439,7 @@ $(document).ready(function() {
         window.setTimeout(function() {
             enabled = true;
         }, 1000);
-        console.log("Application updated");
+        //console.log("Application updated");
         //add later a green fade in.
         $('#updateField').val('Application Update Successful!');
         $('#updateField').fadeIn(250, function() {
