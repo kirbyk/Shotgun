@@ -1,0 +1,17 @@
+<ion-view title="Prizes">
+  <ion-content class="padding">
+    <ion-list class="list prizes">
+      <div ng-repeat="prize in prizes" class="card">
+        <ion-item class="item">
+          <div class="item-left">
+            <img class="logo" src="img/apple.jpg">
+          </div>
+          <div class="item-content">
+            <h2>{{prize.award}}</h2>
+            <p>{{prize.title}}</p>
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view title="Mentors">
+  <ion-content>
+    <ion-list class="list mentors">
+      <div ng-repeat="(name, company) in mentors" class="card">
+        <ion-item class="item item-divider">
+          {{name}}
+        </ion-item>
+        <ion-item ng-repeat="mentor in company" class="item">
+          <div class="item-info">
+            <h2>{{mentor.name}}</h2> <!-- Name -->
+            <p>{{mentor.skills}}</p> <!-- Skills -->
+          </div>
+          <div class="item-more">
+            <a class="button button-icon icon ion-ios7-more-outline more-info" onclick="toggleOptions(this)"></a> <!-- Click to reveal contact info -->
+          </div>
+          <ion-option-button class="button-info button button-icon icon ion-ios7-telephone item-phone"></ion-option-button> <!-- Phone -->
+          <ion-option-button class="button-info button button-icon icon ion-ios7-chatbubble item-text"></ion-option-button> <!-- Text -->
+          <ion-option-button class="button-info button button-icon icon ion-ios7-location item-location"></ion-option-button> <!-- Location -->
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

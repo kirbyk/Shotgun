@@ -2,11 +2,7 @@ extends layout
 
 block content
     link(rel='stylesheet', href='/stylesheets/inside.css')
-    <script src="/socket.io/socket.io.js"></script>
-    <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
-    script(type='text/javascript', src='/javascripts/mainpage.js')
-    noscript Sorry, your browser does not support JavaScript!
+    link(rel='stylesheet', href='/stylesheets/colorpicker.css')
 
     .header
         img(src="images/shotgun_logo.png")
@@ -22,7 +18,7 @@ block content
               #device.iphone
                   #devicetop.iphone-speaker
                   #screen.iphone-screen
-                    iframe#mobile-preview-content.preview-frame(src='http://localhost:8100/#/tab/updates')
+                    iframe#mobile-preview-content.preview-frame(src='/template')
                   a(href='#')
                     #button
                       #button-square
@@ -36,6 +32,7 @@ block content
                 input#prizes(type="submit" value="PRIZES")
                 input#schedule(type="submit" value="SCHEDULE")
             .break3em
+
             .addThree.cf#mainInput
                 input(type="text" name="name" placeholder="Event Name")
                 input(type="text" name="name" placeholder="Primary Color")
@@ -62,6 +59,21 @@ block content
                 input(type='filepicker', data-fp-apikey='AAhXvilT1RIaTrxakvtWnz', data-fp-mimetypes='*/*', data-fp-container='modal', data-fp-services='COMPUTER,DROPBOX,GOOGLE_DRIVE,URL', onchange='filePicked(event)' data-fp-button-text="UPLOAD LOGO")
                 .save
                     h2 SAVE
+
+            //- .addThree#mainInput(ng-controller="colors")
+            //-     label.cf(for="name") Event Name
+            //-     input(type="text" name="name")
+            //-     .block.cf
+            //-         label.colors(for="name") Color 1
+            //-         label.colors(for="name") Color 2
+            //-         label.colors(for="name") Color 3
+            //-     .block.cf
+            //-         input.colors(type="text" name="name" colorpicker ng-model="color1")
+            //-         input.colors(type="text" name="name" colorpicker ng-model="color2")
+            //-         input.colors(type="text" name="name" colorpicker ng-model="color3")
+            //-     label(for="") Upload a Logo
+            //-     input(type='filepicker', data-fp-apikey='AAhXvilT1RIaTrxakvtWnz', data-fp-mimetypes='*/*', data-fp-container='modal', data-fp-services='COMPUTER,DROPBOX,GOOGLE_DRIVE,URL', onchange='filePicked(event)' data-fp-button-text="UPLOAD")
+
 
             .addThree.updates#updatesInput(style='display:none;')
 

@@ -1,0 +1,177 @@
+
+/* PANE */
+
+.pane {
+    background-image: url('../img/bg_dark.png');
+}
+
+
+
+
+
+
+
+/* HEADER */
+
+.bar {
+    background-color: #ECF0F1;
+}
+.bar .title {
+    color: #2C3E50;
+}
+
+
+
+
+
+/* TABS */
+
+.tabs {
+    background-color: #ECF0F1;
+}
+.icon {
+    color: #2C3E50;
+}
+.tab-title {
+    color: #2C3E50;
+}
+
+
+
+
+
+
+
+/* LIST */
+
+.item {
+    text-overflow: clip;
+    overflow: visible;
+}
+.item .item-left {
+    position: relative;
+    width: 20%;
+    display: inline-block;
+}
+
+
+
+
+
+
+
+/* UPDATES */
+
+.updates .item div {
+    vertical-align: top;
+}
+.updates .item .item-left .logo {
+    width: 100%;
+    margin-bottom: 0;
+}
+.updates .item .item-left h6 {
+    text-align: center;
+}
+.updates .item .item-content {
+    position: relative;
+    width: 80%;
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+/* MENTORS */
+
+.mentors .item {
+    padding: 6px 16px;
+    box-sizing: border-box;
+}
+.mentors .item-divider {
+    padding: 16px;
+}
+.mentors .item .item-info {
+    position: relative;
+    width: 80%;
+    display: inline-block;
+    vertical-align: top;
+}
+.mentors .item .item-more {
+    position: relative;
+    width: 20%;
+    display: inline-block;
+    vertical-align: top;
+}
+.mentors .item .item-more .more-info {
+    float: right;
+}
+.mentors .item .item-content {
+    padding: 0;
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+}
+.mentors .item .item-content.open {
+    -webkit-transform: translate3d(-138px, 0px, 0px);
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+}
+.item-phone {
+    padding: 10px 12px 0;
+    background-color: #BDC3C7;
+    color: white;
+    border-left: 1px solid #ddd !important;
+}
+.item-text {
+    padding: 10px 12px 0;
+    background-color: #BDC3C7;
+    color: white;
+    border-left: 1px solid #ddd !important;
+}
+.item-location {
+    padding: 10px 12px 0;
+    background-color: #BDC3C7;
+    color: white;
+    border-left: 1px solid #ddd !important;
+}
+.mentors .item p {
+    display: inline-block;
+    margin-bottom: 0;
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+/* PRIZES */
+
+.prizes .item .item-left .logo {
+    width: 100%;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+.prizes .item .item-left h6 {
+    text-align: center;
+}
+.prizes .item .item-content {
+    position: relative;
+    width: 80%;
+    display: inline-block;
+    vertical-align: middle;
+}
