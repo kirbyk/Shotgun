@@ -71,6 +71,10 @@ myDataRef.on('child_added', function (snapshot) {
 // Get the data on a post that has been removed
 myDataRef.on('child_removed', function (snapshot) {
     console.log("Something happened!");
+    var regX = /[a-z]*$/;
+    categoryNames[fireCounter] = regX.exec(snapshot.ref());
+    fireBaseData[fireCounter] = snapshot.val();
+    fireCounter++;
     toggleTable();
 });
 
