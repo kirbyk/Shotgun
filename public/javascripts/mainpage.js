@@ -69,14 +69,14 @@ myDataRef.on('child_added', function (snapshot) {
 });
 
 // Get the data on a post that has been removed
-myDataRef.on('child_removed', function (snapshot) {
-    console.log("Something happened!");
-    var regX = /[a-z]*$/;
-    categoryNames[fireCounter] = regX.exec(snapshot.ref());
-    fireBaseData[fireCounter] = snapshot.val();
-    fireCounter++;
-    toggleTable();
-});
+// myDataRef.on('child_removed', function (snapshot) {
+//     console.log("Something happened!");
+//     var regX = /[a-z]*$/;
+//     categoryNames[fireCounter] = regX.exec(snapshot.ref());
+//     fireBaseData[fireCounter] = snapshot.val();
+//     fireCounter++;
+//     toggleTable();
+// });
 
 function getbgvalue() {
     return bgname;
@@ -183,29 +183,141 @@ function toggleTable() {
     }
 }
 
+//delete an item from the table based on firebase URL
+function deleteItemInTable(thingToDelete) {
+    //var regX = /[a-z]*$/;
+    //thingToDelete = regX.exec(thingToDelete);
+
+    var k = 0;
+    for(category in fireBaseData) {
+        //console.log ("That name yo "+ fireBaseData[category].toString());
+        var i = 0;
+        if(categoryNames[k] == 'updates' && activeView == 1) {
+            for(update in fireBaseData[k]) {
+                if("https://easy-app.firebaseio.com/updates/" + update == thingToDelete) {
+                    delete fireBaseData[k][update];
+                    return;
+                }
+                i++;
+            }
+        }
+        if(categoryNames[k] == 'mentors' && activeView == 2) {
+            for(companies in fireBaseData[k]) {
+                for(mentors in fireBaseData[k][companies]) {
+                    if("https://easy-app.firebaseio.com/mentors/" + companies + "/" + mentors == thingToDelete) {
+                        delete fireBaseData[k][companies][mentors];
+                        //remove the company?
+                        if(fireBaseData[k][companies].length == 0)
+                            delete fireBaseData[k][companies];
+                        return;
+                    }
+                    i++;
+                }
+            }
+        }
+        if(categoryNames[k] == 'prizes' && activeView == 3) {
+            for(prize in fireBaseData[k]) {
+                if("https://easy-app.firebaseio.com/prizes/" + prize == thingToDelete) {
+                    delete fireBaseData[k][prize];
+                    return;
+                }
+                i++;
+            }
+        }
+        if(categoryNames[k] == 'schedule' && activeView == 4) {
+            for(days in fireBaseData[k]) {
+                for(anEvent in fireBaseData[k][days]) {
+                    if("https://easy-app.firebaseio.com/schedule/" + days + "/" + anEvent == thingToDelete) {
+                        delete fireBaseData[k][days][anEvent];
+                        //remove the company?
+                        if(fireBaseData[k][days].length == 0)
+                            delete fireBaseData[k][days];
+                        return;
+                    }
+                    i++;
+                }
+            }
+        }
+        k++;
+    }
+}
+
+//delete an item from the table based on firebase URL
+function addItemToTable(thingToDelete) {
+    //var regX = /[a-z]*$/;
+    //thingToDelete = regX.exec(thingToDelete);
+
+    var k = 0;
+    for(category in fireBaseData) {
+        //console.log ("That name yo "+ fireBaseData[category].toString());
+        var i = 0;
+        if(categoryNames[k] == 'updates' && activeView == 1) {
+            for(update in fireBaseData[k]) {
+                if("https://easy-app.firebaseio.com/updates/" + update == thingToDelete) {
+                    delete fireBaseData[k][update];
+                    return;
+                }
+                i++;
+            }
+        }
+        if(categoryNames[k] == 'mentors' && activeView == 2) {
+            for(companies in fireBaseData[k]) {
+                for(mentors in fireBaseData[k][companies]) {
+                    if("https://easy-app.firebaseio.com/mentors/" + companies + "/" + mentors == thingToDelete) {
+                        delete fireBaseData[k][companies][mentors];
+                        //remove the company?
+                        if(fireBaseData[k][companies].length == 0)
+                            delete fireBaseData[k][companies];
+                        return;
+                    }
+                    i++;
+                }
+            }
+        }
+        if(categoryNames[k] == 'prizes' && activeView == 3) {
+            for(prize in fireBaseData[k]) {
+                if("https://easy-app.firebaseio.com/prizes/" + prize == thingToDelete) {
+                    delete fireBaseData[k][prize];
+                    return;
+                }
+                i++;
+            }
+        }
+        if(categoryNames[k] == 'schedule' && activeView == 4) {
+            for(days in fireBaseData[k]) {
+                for(anEvent in fireBaseData[k][days]) {
+                    if("https://easy-app.firebaseio.com/schedule/" + days + "/" + anEvent == thingToDelete) {
+                        delete fireBaseData[k][days][anEvent];
+                        //remove the company?
+                        if(fireBaseData[k][days].length == 0)
+                            delete fireBaseData[k][days];
+                        return;
+                    }
+                    i++;
+                }
+            }
+        }
+        k++;
+    }
+}
+
 function deleteData(numberToDelete) {
     //console.log("About to try to destroy.");
     //console.log("Destroy at url: "+ elementsInDisplayArray[numberToDelete][2]);
     remRef = new Firebase(elementsInDisplayArray[numberToDelete][2]);
     remRef.remove();
-    remRef.on('child_removed', function (snapshot) {
-        console.log("Something happened!");
-        toggleTable();
-    });
-    //
+
 
     $('#existingTable').fadeOut(250, function() {
-        $("#existingTable").children().remove();
+        //removing element from things to display
+        deleteItemInTable(elementsInDisplayArray[numberToDelete][2]);
+
         toggleTable();
         $('#existingTable').fadeIn(250);
         //console.log("It should have deleted.");
     });
 }
 
-remRef.on('child_removed', function (snapshot) {
-    console.log("Something happened!");
-    toggleTable();
-});
 
 $(document).ready(function() {
 
